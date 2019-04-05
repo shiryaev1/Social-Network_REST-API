@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400" rel="stylesheet">
+
+    <link rel = "stylesheet" href="{% static '/css/my_profile.css' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Page</title>
+  </head>
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron mt-3">
+        <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+        <p class="lead">Email: {{ user.email }}</p>
+        <p class="lead">Description: {{ user.userprofile.description }}</p>
+        <p class="lead">City: {{ user.userprofile.city }}</p>
+        <p class="lead">Website: {{ user.userprofile.website }}</p>
+        <p class="lead">Phone: {{ user.userprofile.phone }}</p>
+        <p class="lead">Sex: {{ user.userprofile.sex }}</p>
+        <a class="btn btn-lg btn-primary" href="{% url 'accounts:view_profile' %} " role="button">Back &raquo;</a>
+      </div>
+      <div class="container new">
+          <img src="/static/static_dev/img/uz7l8UzDPyo.jpg" class="img-rounded" alt="Cinque Terre">
+      </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<div class="navbar">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="{% url 'posts_list_url' %}">Posts</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'tags_list_url' %}">Tags<span class="sr-only">(current)</span></a>
+          </li>
+
+            {% if request.user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile_information_url' %}">Profile information</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'edit_profile' %}">Edit profile</a>
+                  </li>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:view_profile' %}">My profile</a>
+                  </li>
+                  <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+                  </li>
+            {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+                  </li>
+            {% endif %}
+        </ul>
+
+      </div>
+    </nav>
+</div>
