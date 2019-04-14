@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 from django.contrib import auth
 from django.shortcuts import get_object_or_404
 from my_profile.models import *
+from landing.models import UserProfile
 from landing.forms import EditProfileInformationForm
 from my_profile.forms import TagForm, PostForm
 
@@ -118,14 +119,22 @@ def tags_list(request):
     return render(request,'my_profile/tags_list.html',context)
 
 
-def profile_information(request,pk=None):
+def profile_information(request, pk=None):
     if pk:
         if int(pk) == request.user.id:
             return redirect('profile_information_url')
         user = User.objects.get(pk=pk)
+        images = UserProfile.objects.filter(image=UserProfile.image)
+        print(images)
     else:
         user = request.user
-    context = {'user': user}
+        print(user)
+        images = UserProfile.objects.filter(image=UserProfile.image)
+        print(images)
+    context = {
+        'user': user,
+        'images': images
+    }
     return render(request,'accounts/profile_information.html', context)
 
 

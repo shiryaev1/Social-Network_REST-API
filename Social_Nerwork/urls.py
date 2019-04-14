@@ -23,8 +23,10 @@ from Social_Nerwork.router import router
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('landing.urls')),
-    path('',include('my_profile.urls')),
+    path('', include('my_profile.urls')),
     path('api/', include(router.urls)),
+    path('chat/', include('chat.urls',)),
+
 
 ]
 

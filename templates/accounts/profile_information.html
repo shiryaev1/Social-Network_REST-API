@@ -44,8 +44,16 @@
         <p class="lead">Sex: {{ user.userprofile.sex }}</p>
         <a class="btn btn-lg btn-primary" href="{% url 'accounts:view_profile' %} " role="button">Back &raquo;</a>
       </div>
-      <div class="container new">
-          <img src="/static/static_dev/img/uz7l8UzDPyo.jpg" class="img-rounded" alt="Cinque Terre">
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                {% for image in images %}
+                    <div class="product-image-item">
+                        <img src="{{ image }}" class="img-fluid">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
       </div>
 </div>
 

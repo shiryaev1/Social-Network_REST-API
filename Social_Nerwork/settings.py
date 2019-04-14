@@ -25,13 +25,13 @@ SECRET_KEY = '53jo&%(0hgh&n7qjxu*8p6&g_4hh#1k0*m7h8)8p0y3b0$9wgs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'landing',
+    'chat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'channels',
     'my_profile',
+    'landing',
+
 
 ]
 
@@ -54,6 +57,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Social_Nerwork.urls'
+
 
 
 TEMPLATES = [
@@ -74,7 +78,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Social_Nerwork.wsgi.application'
+ASGI_APPLICATION = 'Social_Nerwork.routing.application'
 
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 
 # Database
