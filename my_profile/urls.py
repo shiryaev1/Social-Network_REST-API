@@ -18,8 +18,7 @@ urlpatterns = [
     re_path(r'^post/(?P<slug>[\w\-]+)/delete/$', PostDelete.as_view(),
             name='post_delete_url'),
     path('info/', views.profile_information, name='profile_information_url'),
-    path('edit/profile/',EditProfileInformation.as_view(), name='edit_profile')
-
-
-
+    # path('edit/profile/', EditProfileInformation.as_view(), name='edit_profile'),
+    re_path(r'^edit/profile/(?P<pk>\d+)/$', EditProfileInformation.as_view(),
+            name='edit_profile_url'),
 ]

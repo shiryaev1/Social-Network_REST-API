@@ -12,9 +12,11 @@ urlpatterns = [
          name='login'),
     path('logout/', LogoutView.as_view(next_page='posts_list_url'),
          name='logout'),
-    path('profile/', views.view_profile, name='view_profile'),
     re_path(r'^profile/(?P<pk>\d+)/$', views.view_profile,
             name='view_profile_with_pk'),
+    path('profile/', views.view_profile, name='view_profile'),
     re_path(r'^connect/(?P<operation>.+)/(?P<pk>\d+)/$', views.change_friends,
-            name='change_friends')
+            name='change_friends'),
+    path('friends/', views.view_friends, name='view_friends'),
+    re_path(r'^view_profile_friend/(?P<pk>\d+)/$', views.view_profile_friend, name='view_profile_friend'),
 ]

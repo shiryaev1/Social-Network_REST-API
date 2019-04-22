@@ -1,8 +1,9 @@
-html,body{
+body{
     height: 100%;
     max-height: 100%;
     font-family:'Roboto','sans-serif' ;
     }
+
 .top-container{
     padding-top: 10%;
 
@@ -42,3 +43,5 @@ html,body{
 .text{
     font-size: 25px;
 }
+
+

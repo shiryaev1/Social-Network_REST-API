@@ -1,0 +1,13 @@
+.body{
+    background: red;
+}
+img {width:100%;}
+.row{
+    width: 1000px;
+}
+.like{
+    margin-top: -4%;
+}
+/*.dislike{*/
+    /*margin-top: -4%;*/
+/*}*/

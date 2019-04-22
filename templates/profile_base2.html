@@ -1,0 +1,29 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel = "stylesheet" href="{% static '/css/profile2.css' %}">
+    <link rel = "stylesheet" href="{% static '/css/my_profile.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Page</title>
+
+  </head>
+
+
+    <body>
+    {% include 'include/navbar.html' %}
+
+    {% block profile2 %}
+
+    {% endblock %}
+
+    <script src ="{% static 'js/js.js' %}"></script>
+
+    </body>
+</html>

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <form action="{{ post.get_update_url}}" method="post">
+    <form action="{{ post.get_update_url}}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% for field in form %}
             <div class="form-group">

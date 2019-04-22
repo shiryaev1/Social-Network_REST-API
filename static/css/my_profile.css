@@ -1,15 +1,97 @@
-html,body{
-    height: 100%;
-    max-height: 100%;
-    font-family:'Roboto','sans-serif' ;
-    }
+/*body{*/
+    /*height: 100%;*/
+    /*max-height: 100%;*/
+    /*font-family:'Roboto','sans-serif' ;*/
+    /*background-color: forestgreen;*/
+    /*}*/
 
-.wrapper{
-    position: relative;
-    margin-top: 83px;
+/*.wrapper{*/
+    /*position: relative;*/
+    /*margin-top: 83px;*/
+/*}*/
+
+/*.offset-md-2{*/
+    /*position: relative;*/
+    /*margin-top: 69px;*/
+/*}*/
+
+/*.container {*/
+    /*max-width: 1140px;*/
+/*}*/
+
+.but{
+    float: right;
+    background-color: #54585b;
+
+}
+.but a{
+    color: whitesmoke;
+
 }
 
-.offset-md-2{
+.but a:hover{
+    color:darkgrey;
+}
+
+.but-update a{
+    color: whitesmoke;
+}
+
+.but-update a:hover{
+    color: darkgrey;
+}
+.but-update{
+    float: right;
+    background-color: #54585b;
     position: relative;
-    margin-top: 69px;
+    left: -10px;
+}
+
+.but-delete{
+    float: right;
+    position: relative;
+    left: -4px;
+    background-color: #54585b;
+}
+.but-delete a{
+    color: whitesmoke;
+}
+
+.but-delete a:hover{
+    color: darkgrey;
+}
+
+.form-delete{
+    position: relative;
+    margin: 75px;
+}
+
+.but-friend{
+    float: right;
+    position: relative;
+    left: -4px;
+    background-color: #54585b;
+}
+
+.but-friend a{
+    color: whitesmoke;
+}
+
+.but-friend a:hover{
+    color: darkgrey;
+}
+.list-group{
+    margin: 146px;
+    position: relative;
+    margin-top: -484px;
+    margin-left: 132px;
+    left: 163px;
+}
+.create{
+    position: relative;
+    right: -78px;
+}
+.message{
+    position: relative;
+    right: -85px;
 }

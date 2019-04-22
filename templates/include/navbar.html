@@ -12,12 +12,9 @@
           </li>
 
             {% if request.user.is_authenticated %}
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'profile_information_url' %}">Profile information</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'edit_profile' %}">Edit profile</a>
-                  </li>
+{#                  <li class="nav-item">#}
+{#                    <a class="nav-link" href="{% url 'profile_information_url' %}">Profile information</a>#}
+{#                  </li>#}
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'accounts:view_profile' %}">My profile</a>

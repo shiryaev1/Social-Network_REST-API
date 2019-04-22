@@ -159,3 +159,4 @@ REST_FRAMEWORK = {
     ),
 }
 
+DATETIME_FORMAT = '%H:%M'

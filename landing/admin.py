@@ -14,3 +14,4 @@ admin.site.register(UserProfile,UserProfileAdmin)
 
 
 admin.site.register(Friend)
+

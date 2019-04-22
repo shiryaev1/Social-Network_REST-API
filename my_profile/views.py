@@ -2,11 +2,11 @@ from django.shortcuts import render
 from django.views.generic import View
 from django.shortcuts import redirect
 from django.contrib import auth
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, HttpResponse
 from my_profile.models import *
-from landing.models import UserProfile
 from landing.forms import EditProfileInformationForm
 from my_profile.forms import TagForm, PostForm
+from landing.models import UserProfile
 
 
 class PostCreate(View):
@@ -15,10 +15,14 @@ class PostCreate(View):
         return render(request,'my_profile/post_create.html',context={'form':form})
 
     def post(self,request):
-        bount_form = PostForm(request.POST)
+        bount_form = PostForm(request.POST, request.FILES)
         if bount_form.is_valid():
-            new_post = bount_form.save(request.user)
+            if 'image' in request.FILES:
+                bount_form.photo = request.FILES['image']
+            bount_form.save(request.user)
             return redirect('accounts:view_profile')
+        else:
+            print(bount_form.errors)
         context = {'form': bount_form}
         return render(request,'my_profile/post_create.html', context)
 
@@ -124,31 +128,42 @@ def profile_information(request, pk=None):
         if int(pk) == request.user.id:
             return redirect('profile_information_url')
         user = User.objects.get(pk=pk)
-        images = UserProfile.objects.filter(image=UserProfile.image)
-        print(images)
     else:
         user = request.user
-        print(user)
-        images = UserProfile.objects.filter(image=UserProfile.image)
-        print(images)
     context = {
         'user': user,
-        'images': images
     }
-    return render(request,'accounts/profile_information.html', context)
+    return render(request, 'accounts/profile_information.html', context)
+
+
+# class EditProfileInformation(View):
+#     def get(self,request):
+#         edit_form = EditProfileInformationForm()
+#         context = {'form': edit_form}
+#         return render(request, 'accounts/edit_profile.html', context)
+#
+#     def post(self,request):
+#         edit_bount_form = EditProfileInformationForm(request.POST or None)
+#         if edit_bount_form.is_valid():
+#             new_post = edit_bount_form.save(request.user)
+#             return redirect('accounts:view_profile')
+#         context = {'form': edit_bount_form}
+#         return render(request, 'accounts/edit_profile.html', context)
 
 
 class EditProfileInformation(View):
-    def get(self,request):
-        edit_form = EditProfileInformationForm()
-        context = {'form': edit_form}
-        return render(request, 'accounts/edit_profile.html', context)
+    def get(self,request, pk):
+        profile = UserProfile.objects.get(pk=pk)
+        edit_form = EditProfileInformationForm(instance=profile)
+        context = {'form': edit_form, 'profile': profile}
+        return render(request, 'accounts/update_edit_profile.html', context)
 
-    def post(self,request):
-        edit_bount_form = EditProfileInformationForm(request.POST or None)
+    def post(self,request, pk):
+        profile = UserProfile.objects.get(pk=pk)
+        edit_bount_form = EditProfileInformationForm(request.POST or None, instance=profile)
         if edit_bount_form.is_valid():
-            new_post = edit_bount_form.save(request.user)
-            return redirect('profile_information_url')
+            new_form = edit_bount_form.save(request.user)
+            return redirect('accounts:view_profile')
         context = {'form': edit_bount_form}
         return render(request, 'accounts/edit_profile.html', context)
 
@@ -190,3 +205,5 @@ def remove_like(request):
         post.save()
 
     return redirect('posts_list_url')
+
+

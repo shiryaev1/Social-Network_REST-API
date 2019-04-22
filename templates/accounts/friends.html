@@ -1,0 +1,284 @@
+{#{% extends 'base.html' %}#}
+{#{% load static %}#}
+{##}
+{#{% block content %}#}
+{#    <div class="col-md-4 float-right" >#}
+{#			<ul class="list-group">#}
+{#            <h3>Other People</h3>#}
+{#				{% for user in users %}#}
+{#				<li class="list-group-item">#}
+{#					<a href="{% url 'accounts:view_profile_with_pk' pk=user.pk %}">#}
+{#		    		<h3>{{ user.username }}</h3>#}
+{#		    	    </a>#}
+{##}
+{#					{% if not user in friends %}#}
+{#                        <div class="but-friend">#}
+{#                            <a href="{% url 'accounts:change_friends' operation='add' pk=user.pk %}" class ="btn btn-add-friend">Add friend</a>#}
+{#                        </div>#}
+{#					{% endif %}#}
+{#                    {% if user in friends %}#}
+{#                        <div class="but-friend">#}
+{#                            <a href="{% url 'accounts:change_friends' operation='remove' pk=user.pk %}" class ="btn btn-remove-friend">Remove friend</a>#}
+{#                        </div>#}
+{#					</a>#}
+{#                    {% endif %}#}
+{#				</li>#}
+{#				{% endfor %}#}
+{#			</ul>#}
+{#		</div>#}
+{#	</div>#}
+{##}
+{#{% endblock %}#}
+
+{#{% extends 'base.html' %}#}
+{#{% load static %}#}
+{##}
+{#{% block content %}#}
+{#<div class="container">#}
+{#    <div class="row">#}
+{#    <div class="row">#}
+{#    <div class="row">#}
+{##}
+{#    <div class="col xs-5">#}
+{#        {% if friends%}#}
+{#            <h2>Ваши друзья:</h2>#}
+{#                {% for friend in friends %}#}
+{##}
+{#                    <a href="{% url 'accounts:view_profile_with_pk' pk=friend.pk %}">#}
+{#                        <div class="row">#}
+{#                        <div class="col-xs-1">#}
+{#                            {% if friend.userprofile.image %}#}
+{#                                <img src="{{ friend.userprofile.image.url }}" width="70" height="70">#}
+{#                            {% endif %}#}
+{#                        </div>#}
+{#                        <div class="col-xs-10">#}
+{#                            <p style="font-size: 35px;">{{ friend.username }}</p>#}
+{#                        </div>#}
+{#                        </div>#}
+{##}
+{#                    </a>#}
+{##}
+{#                    <a href="{% url 'accounts:change_friends' operation='remove' pk=friend.pk %}">#}
+{#                    <button type="button" class="btn btn-default">Удалить из друзей</button>#}
+{#                    </a>#}
+{#                <hr>#}
+{##}
+{#            <!--<a href="{% url 'accounts:change_friends' operation='add' pk=user.pk %}">-->#}
+{#            <!--<button type="button" class="btn btn-success">Добавить в друзья</button>-->#}
+{#            <!--</a>-->#}
+{#        <!--<hr>-->#}
+{##}
+{#            {% endfor %}#}
+{#        {% else %}#}
+{#            <h2>У вас нет друзей</h2>#}
+{#        {% endif %}#}
+{#        <br>#}
+{#        <a href="{% url 'home:home' %}" class="btn btn-info btn-lg">Обратно</a>#}
+{#    </div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{##}
+{##}
+{#{% endblock %}#}
+
+{##}
+{% extends 'profile_base2.html' %}
+{% load static %}
+
+
+{% block profile2 %}
+    <div class="container main-secction">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 image-section">
+                    <img src="/static/media/profile_image/cap.jpg">
+                </div>
+                <div class="row user-left-part">
+                    <div class="col-md-3 col-sm-3 col-xs-12 pull-left">
+                        <div class="row ">
+                            {% if user.userprofile.image %}
+                                <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
+                                    <img src="{{ user.userprofile.image.url}}" class="rounded-circle">
+                                </div>
+                            {% else %}
+                                <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
+                                    <img src="{% static 'media/profile_image/anonnymous.jpg' %}" class="rounded-circle">
+                                </div>
+                            {% endif %}
+
+                            <div class="row user-detail-row">
+                                <div class="col-md-12 user-detail-section2 pull-left">
+                                    <div class="border"></div>
+                                    <p>FOLLOWER</p>
+                                     <div class="followers">
+                                            {{ followers }}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
+                        <div class="row profile-right-section-row">
+                            <div class="col-md-12 profile-header">
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
+                                        <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+                                        <h5>Developer</h5>
+                                    </div>
+                                    {% if user in friends %}
+                                        <div class="create">
+                                            <a href="{% url 'accounts:change_friends' operation='remove' pk=user.pk %}" class ="btn btn-dark">Remove friend</a>
+                                        </div>
+                                    {% else %}
+                                        <div class="create">
+                                            <a href="{% url 'accounts:change_friends' operation='add' pk=user.pk %}" class ="btn btn-dark">Add friend</a>
+                                        </div>
+                                    {% endif %}
+                                    <div class="message">
+                                        <a href="" class="btn btn-dark">Send message</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" id="profile" onclick="checked()"> Profile information</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" id="friends" onclick="checked_second()"> Friends</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" id="other-users" onclick="checked_third()"> Other people</a>
+                                                    </li>
+                                                  </ul>
+
+                                                  <!-- Tab panes -->
+                                                  <div class="tab-content" id="view">
+                                                    <div role="tabpanel" class="tab-pane fade show active" >
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <label>Id: </label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ user.id }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <label>Email: </label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ user.email }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <label>Description: </label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ user.userprofile.description }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <label>City: </label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ user.userprofile.city }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <label>Website: </label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ user.userprofile.website }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <label>Phone: </label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ user.userprofile.phone }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <label>Sex: </label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ user.userprofile.sex }}</p>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                    </div>
+                                    <div class="users" id="users">
+                                            {% for client in users %}
+                                                {% if client in friends %}
+                                                    {% if client.first_name and client.last_name %}
+                                                        <div class="blog-post">
+                                                            <p>{{ client.first_name }} {{ client.last_name }}</p>
+                                                        </div>
+                                                    {% else %}
+                                                        <p>Anonymous user</p>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+
+                                    </div>
+                                    <div class="other" id="other">
+                                        {% for client in users %}
+                                            {% if not client in friends %}
+                                                {% if client.first_name and client.last_name %}
+                                                    <div class="blog-post">
+                                                        <p>{{ client.first_name }} {{ client.last_name }}</p>
+                                                    </div>
+                                                {% endif %}
+                                            {% endif %}
+
+                                                {% if not client.first_name and client.last_name %}
+                                                    <div class="but-friend">
+                                                        <a href="{% url 'accounts:change_friends' operation='add' pk=client.pk %}" class ="btn btn-add-friend">Add friend</a>
+                                                    </div>
+                                                    <p>Anonymous user</p>
+                                                {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 fixed">
+                <h3 class="pb-4 mb-4 font-italic border-bottom">
+                    My posts
+                </h3>
+                    {% for field in post %}
+                          <div class="blog-post">
+                            <h2 class="blog-post-title">{{ field.title }}</h2>
+                            <p class="blog-post-meta">{{ field.created }}</p>
+                            <p>{{ field.content }}</p>
+                          </div><!-- /.blog-post -->
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+{% endblock %}
+
+
+
+
+
+

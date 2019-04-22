@@ -34,7 +34,7 @@ class EditProfileInformationForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ['description', 'city', 'website','phone', 'image','sex']
+        fields = ['description', 'city', 'website', 'phone', 'sex', 'image']
 
         widgets = {
             'description': forms.Textarea(attrs={'class': 'form-control'}),

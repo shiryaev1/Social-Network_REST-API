@@ -26,28 +26,36 @@ def register(request):
 
 
 def view_profile(request, pk=None):
-
+    friends = None
+    users = None
+    followers = None
     if pk:
         if int(pk) == request.user.id:
             return redirect('accounts:view_profile')
         user = User.objects.get(pk=pk)
-        user_post = Post.objects.filter(author_id=int(pk))
+        user_post = Post.objects.filter(author_id=int(pk)).order_by('-created')
         last_minute = datetime.now(tz=timezone.utc) - timedelta(1)
         results = Post.objects.filter(created__gt=last_minute)
         tags = Tag.objects.all()
 
     else:
         user = request.user
-        user_post = Post.objects.filter(author_id=user.id)
+        user_post = Post.objects.filter(author_id=user.id).order_by('-created')
         last_minute = datetime.now(tz=timezone.utc) - timedelta(1)
         results = Post.objects.filter(created__gt=last_minute).last()
         tags = Tag.objects.all()
         users = User.objects.exclude(id=request.user.id)
+
+
         try:
             friend = Friend.objects.get(current_user=request.user)
             friends = friend.users.all()
+            followers = friends.count()
+
         except:
             friends = None
+            followers = None
+
 
     args = {
         'user': user,
@@ -55,10 +63,12 @@ def view_profile(request, pk=None):
         'post_last': results,
         'tags': tags,
         'friends': friends,
-        'users': users
+        'users': users,
+        'followers': followers
+
     }
 
-    return render(request, 'accounts/profile.html', args)
+    return render(request, 'accounts/profile2.html', args)
 
 
 def change_friends(request, operation, pk):
@@ -73,3 +83,53 @@ def change_friends(request, operation, pk):
     return redirect('accounts:view_profile')
 
 
+def view_friends(request):
+    users = User.objects.exclude(id=request.user.id)
+    try:
+        friend = Friend.objects.get(current_user=request.user)
+        friends = friend.users.all()
+    except:
+        friends = None
+    args = {
+    'friends': friends,
+    'users': users,
+    }
+    return render(request, 'accounts/friends.html', args)
+
+
+def view_profile_friend(request, pk=None):
+    friends = None
+    users = None
+    followers = None
+    if pk:
+        if int(pk) == request.user.id:
+            return redirect('accounts:view_profile_friend')
+        user = User.objects.get(pk=pk)
+        user_post = Post.objects.filter(author_id=int(pk)).order_by('-created')
+        last_minute = datetime.now(tz=timezone.utc) - timedelta(1)
+        results = Post.objects.filter(created__gt=last_minute)
+        tags = Tag.objects.all()
+        users = User.objects.exclude(id=request.user.id)
+        try:
+            friend = Friend.objects.get(current_user=request.user)
+            friends = friend.users.all()
+            followers = friends.count()
+
+        except:
+            friends = None
+            followers = None
+
+
+
+    args = {
+        'user': user,
+        'post': user_post,
+        'post_last': results,
+        'tags': tags,
+        'friends': friends,
+        'users': users,
+        'followers': followers
+
+    }
+
+    return render(request, 'accounts/friends.html', args)
