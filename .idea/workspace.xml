@@ -2,38 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6ee6b03-249e-4727-92bb-329520f0852d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Social_Nerwork/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Social_Nerwork/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/consumers.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/consumers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/routing.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/routing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/landing/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/landing/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/landing/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/landing/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/landing/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/landing/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/landing/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/landing/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/landing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/landing/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_profile/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_profile/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_profile/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_profile/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_profile/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_profile/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_profile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_profile/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/landing.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/landing.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/my_profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/my_profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/js.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accounts/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accounts/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accounts/profile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accounts/profile_information.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/profile_information.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/chat/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chat/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/chat/room.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chat/room.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/include/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/include/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/my_profile/post_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_profile/post_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/my_profile/post_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_profile/post_update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/my_profile/posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_profile/posts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/profile_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile_base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/accounts/users.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my_profile/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+            <state relative-caret-position="233">
+              <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -97,22 +66,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/landing/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/accounts/update_edit_profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
+            <state relative-caret-position="-135">
               <caret line="4" column="53" lean-forward="true" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
             </state>
           </provider>
@@ -139,7 +96,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my_profile/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="81">
@@ -224,8 +181,8 @@
         <option value="$PROJECT_DIR$/landing/models.py" />
         <option value="$PROJECT_DIR$/templates/accounts/profile2.html" />
         <option value="$PROJECT_DIR$/templates/accounts/update_edit_profile.html" />
-        <option value="$PROJECT_DIR$/my_profile/urls.py" />
         <option value="$PROJECT_DIR$/my_profile/views.py" />
+        <option value="$PROJECT_DIR$/my_profile/urls.py" />
       </list>
     </option>
   </component>
@@ -440,12 +397,12 @@
       <workItem from="1555766150250" duration="10956000" />
       <workItem from="1555845674792" duration="2077000" />
       <workItem from="1555853075687" duration="662000" />
-      <workItem from="1555911453147" duration="15937000" />
+      <workItem from="1555911453147" duration="16371000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190268000" />
+    <option name="totallyTimeSpent" value="190702000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -569,13 +526,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/accounts/users.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1701">
-          <caret line="81" column="6" selection-start-line="81" selection-start-column="6" selection-end-line="81" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -817,13 +767,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/accounts/update_edit_profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="4" column="53" lean-forward="true" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/landing/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -844,16 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_profile/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/my_profile/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
@@ -861,6 +794,30 @@
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_profile/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/accounts/users.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="81" column="6" selection-start-line="81" selection-start-column="6" selection-end-line="81" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/accounts/update_edit_profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-135">
+          <caret line="4" column="53" lean-forward="true" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
         </state>
       </provider>
     </entry>
