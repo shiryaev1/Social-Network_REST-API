@@ -18,7 +18,7 @@ class PostCreate(View):
         bount_form = PostForm(request.POST, request.FILES)
         if bount_form.is_valid():
             if 'image' in request.FILES:
-                bount_form.photo = request.FILES['image']
+                bount_form.image = request.FILES['image']
             bount_form.save(request.user)
             return redirect('accounts:view_profile')
         else:
@@ -39,15 +39,20 @@ class PostUpdate(View):
 
     def post(self,request,slug):
         post = Post.objects.get(slug__iexact=slug)
-        bount_form = PostForm(request.POST,instance=post)
+        bount_form = PostForm(request.POST, request.FILES, instance=post)
         if bount_form.is_valid():
+            if 'image' in request.FILES:
+                bount_form.image = request.FILES['image']
             new_post = bount_form.save(request.user)
             return redirect('accounts:view_profile')
+        else:
+            print(bount_form.errors)
         context = {
             'form': bount_form,
             'post': post
         }
         return render(request,'my_profile/post_update.html', context)
+
 
 
 class PostDelete(View):
@@ -63,7 +68,7 @@ class PostDelete(View):
 
 
 def posts_list(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-created')
     context = {
         'posts': posts,
         'username': auth.get_user(request).username
@@ -160,12 +165,17 @@ class EditProfileInformation(View):
 
     def post(self,request, pk):
         profile = UserProfile.objects.get(pk=pk)
-        edit_bount_form = EditProfileInformationForm(request.POST or None, instance=profile)
+        edit_bount_form = EditProfileInformationForm(request.POST or None,
+                                                     request.FILES, instance=profile)
         if edit_bount_form.is_valid():
-            new_form = edit_bount_form.save(request.user)
+            if 'image' in request.FILES:
+                edit_bount_form.image = request.FILES['image']
+            edit_bount_form.save(request.user)
             return redirect('accounts:view_profile')
+        else:
+            print(edit_bount_form.errors)
         context = {'form': edit_bount_form}
-        return render(request, 'accounts/edit_profile.html', context)
+        return render(request, 'accounts/update_edit_profile.html', context)
 
 
 def add_like(request):
