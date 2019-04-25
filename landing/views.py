@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, reverse
 from datetime import datetime, timedelta
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -119,8 +119,10 @@ def view_profile_friend(request, pk=None):
             friends = None
             followers = None
 
-
-
+    if user.id > request.user.id:
+        room_name = f'{user.id}_{request.user.id}'
+    else:
+        room_name = f'{request.user.id}_{user.id}'
     args = {
         'user': user,
         'post': user_post,
@@ -128,8 +130,8 @@ def view_profile_friend(request, pk=None):
         'tags': tags,
         'friends': friends,
         'users': users,
-        'followers': followers
-
+        'followers': followers,
+        'room': reverse('room', kwargs={'room_name': room_name})
     }
 
     return render(request, 'accounts/friends.html', args)
