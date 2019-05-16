@@ -22,10 +22,11 @@ from Social_Nerwork.router import router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('landing.urls')),
+    path('accounts/', include('landing.urls'), name='accounts'),
     path('', include('my_profile.urls')),
     path('api/', include(router.urls)),
     path('chat/', include('chat.urls',)),
+    path('oauth/', include('social_django.urls'))
 
 
 ]

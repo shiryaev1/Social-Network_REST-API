@@ -6,14 +6,14 @@
     <div class="container main-secction">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12 image-section">
-                    <img src="/static/media/profile_image/cap.jpg">
+                    <img src="/static/media/profile_image/chikago-goroda.jpg">
                 </div>
                 <div class="row user-left-part">
                     <div class="col-md-3 col-sm-3 col-xs-12 pull-left">
                         <div class="row ">
-                            {% if user.userprofile.image %}
+                            {% if user.userprofile.image.image %}
                                 <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
-                                    <img src="{{ user.userprofile.image.url}}" class="rounded-circle">
+                                    <img src="{{ user.userprofile.image.image.url}}" class="rounded-circle">
                                 </div>
                             {% else %}
                                 <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
@@ -23,7 +23,7 @@
 
                             <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
                                 <a href="{% url 'edit_profile_url' pk=user.pk %}" class="btn btn-dark btn-block">Edit profile</a>
-                                <button class="btn btn-dark btn-block">Descargar Curriculum</button>
+                                <a href="{% url 'add_profile_image_url' %}" class="btn btn-dark btn-block">Add image</a>
                             </div>
                             <div class="row user-detail-row">
                                 <div class="col-md-12 user-detail-section2 pull-left">
@@ -38,7 +38,7 @@
 
                         </div>
                     </div>
-                    <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
+                    <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section" style="background-color: #c0c0c0">
                         <div class="row profile-right-section-row">
                             <div class="col-md-12 profile-header">
                                 <div class="row">
@@ -199,6 +199,38 @@
                           </div><!-- /.blog-post -->
                     {% endfor %}
 
+                </div>
+                <div class="col-12 fixed">
+                    <h3 class="pb-4 mb-4 font-italic border-bottom">
+                    My photos
+                    </h3>
+{#                    {% for imagess in user %}#}
+{#                        <div class="col-lg-3">#}
+{#                            <div class="product-item">#}
+{#                                <div>#}
+{#                                    <img src="{{ imagess.userprofile.image.url }}" class="img-fluid">#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                    {% endfor %}#}
+                    <section>
+    <h3>Two Individual Images</h3>
+{#    {%  for image in user.userprofile.image.image %}#}
+{#        <div>#}
+{#            <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1"><img class="example-image" src="{{ user.userprofile.image.image.url }}" alt="image-1" width="10%" /></a>    #}
+{#        </div>#}
+{#    {% endfor %}#}
+
+    <hr />
+
+    <h3>A Four Image Set</h3>
+    <div>
+      <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-3.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-3.jpg" alt=""/></a>
+      <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-4.jpg" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard."><img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-4.jpg" alt="" /></a>
+      <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-5.jpg" data-lightbox="example-set" data-title="The next image in the set is preloaded as you're viewing."><img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-5.jpg" alt="" /></a>
+      <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-6.jpg" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close."><img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-6.jpg" alt="" /></a>
+    </div>
+  </section>
                 </div>
 
             </div>

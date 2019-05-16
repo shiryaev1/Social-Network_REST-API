@@ -70,7 +70,7 @@
     float: right;
     position: relative;
     left: -4px;
-    background-color: #54585b;
+    /*background-color: #54585b;*/
 }
 
 .but-friend a{
@@ -89,9 +89,14 @@
 }
 .create{
     position: relative;
-    right: -78px;
+    right: -166px;
 }
 .message{
     position: relative;
     right: -85px;
 }
+
+.remove-add-friend{
+    position: relative;
+    right: -76px;
+  }

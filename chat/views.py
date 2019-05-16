@@ -1,7 +1,6 @@
 from django.shortcuts import render, Http404
 
 from .models import Message
-from landing.models import Friend
 
 
 def index(request):

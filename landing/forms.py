@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from landing.models import UserProfile
+from landing.models import UserProfile, ProfileImage
 
 
 class RegistrationForm(UserCreationForm):
@@ -50,6 +50,18 @@ class EditProfileInformationForm(forms.ModelForm):
         user_info.user = user
         user_info.save()
 
+
+class AddProfileImageForm(forms.ModelForm):
+
+    class Meta:
+        model = ProfileImage
+        fields = ['image', 'is_active',]
+
+
+    def save(self, user):
+        user_info = super(AddProfileImageForm, self).save(commit=False)
+        user_info.user = user
+        user_info.save()
 
 
 

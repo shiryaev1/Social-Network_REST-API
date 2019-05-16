@@ -10,9 +10,13 @@
         </p>
         <h2>login</h2>
         <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+            <p>---OR---</p>
+            <a href="{% url 'social:begin' 'google-oauth2' %}">
+                <button type="button" name="button" class="btn btn-danger">Google+</button>
+            </a>
         </form>
     </div>
 

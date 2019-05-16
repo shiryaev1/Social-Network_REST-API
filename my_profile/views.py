@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.contrib import auth
 from django.shortcuts import get_object_or_404, HttpResponse
 from my_profile.models import *
-from landing.forms import EditProfileInformationForm
+from landing.forms import EditProfileInformationForm, AddProfileImageForm
 from my_profile.forms import TagForm, PostForm
 from landing.models import UserProfile
 
@@ -176,6 +176,24 @@ class EditProfileInformation(View):
             print(edit_bount_form.errors)
         context = {'form': edit_bount_form}
         return render(request, 'accounts/update_edit_profile.html', context)
+
+
+class AddProfileImage(View):
+    def get(self, request):
+        form = AddProfileImageForm()
+        return render(request, 'accounts/add_profile_image.html', context={'form': form})
+
+    def post(self, request):
+        bount_form = AddProfileImageForm(request.POST, request.FILES)
+        if bount_form.is_valid():
+            if 'image' in request.FILES:
+                bount_form.image = request.FILES['image']
+            bount_form.save(request.user)
+            return redirect('accounts:view_profile')
+        else:
+            print(bount_form.errors)
+        context = {'form': bount_form}
+        return render(request, 'accounts/add_profile_image.html', context)
 
 
 def add_like(request):

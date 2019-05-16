@@ -33,7 +33,7 @@
 
                         </div>
                     </div>
-                    <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
+                    <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section" style="background-color: #c0c0c0">
                         <div class="row profile-right-section-row">
                             <div class="col-md-12 profile-header">
                                 <div class="row">
@@ -42,11 +42,11 @@
                                         <h5>Developer</h5>
                                     </div>
                                     {% if user in friends %}
-                                        <div class="create">
+                                        <div class="remove-add-friend">
                                             <a href="{% url 'accounts:change_friends' operation='remove' pk=user.pk %}" class ="btn btn-dark">Remove friend</a>
                                         </div>
                                     {% else %}
-                                        <div class="create">
+                                        <div class="remove-add-friend">
                                             <a href="{% url 'accounts:change_friends' operation='add' pk=user.pk %}" class ="btn btn-dark">Add friend</a>
                                         </div>
                                     {% endif %}
@@ -136,9 +136,11 @@
                                             {% for client in users %}
                                                 {% if client in friends %}
                                                     {% if client.first_name and client.last_name %}
-                                                        <div class="blog-post">
-                                                            <p>{{ client.first_name }} {{ client.last_name }}</p>
-                                                        </div>
+                                                        <a href="{% url 'accounts:view_profile_friend' pk=client.pk %}">
+                                                            <div class="blog-post">
+                                                                <p>{{ client.first_name }} {{ client.last_name }}</p>
+                                                            </div>
+                                                        </a>
                                                     {% else %}
                                                         <p>Anonymous user</p>
                                                     {% endif %}
@@ -150,9 +152,11 @@
                                         {% for client in users %}
                                             {% if not client in friends %}
                                                 {% if client.first_name and client.last_name %}
-                                                    <div class="blog-post">
-                                                        <p>{{ client.first_name }} {{ client.last_name }}</p>
-                                                    </div>
+                                                    <a href="{% url 'accounts:view_profile_friend' pk=client.pk %}">
+                                                        <div class="blog-post">
+                                                            <p>{{ client.first_name }} {{ client.last_name }}</p>
+                                                        </div>
+                                                    </a>
                                                 {% endif %}
                                             {% endif %}
 

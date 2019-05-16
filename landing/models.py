@@ -5,6 +5,20 @@ from django.db.models.signals import post_save
 from my_profile.models import Post
 
 
+class ProfileImage(models.Model):
+	image = models.ImageField(upload_to='profile_image', blank=True)
+	is_active = models.BooleanField(default=True)
+	created = models.DateTimeField(auto_now_add=True, auto_now=False)
+	update = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+	def __str__(self):
+		return "%s" % self.id
+
+	class Meta:
+		verbose_name = 'Фотография'
+		verbose_name_plural = 'Фотографии'
+
+
 class UserProfileManager(models.Manager):
 	def get_queryset(self):
 		return super(UserProfileManager, self).get_queryset().all()
@@ -17,9 +31,8 @@ class UserProfile(models.Model):
 	website = models.URLField(default='',blank=True)
 	phone = models.IntegerField(default=0,blank=True)
 	sex = models.CharField(max_length=1, default='M')
-	posts = models.ForeignKey(Post, blank=True, null= True, default=None,
-							  on_delete=models.CASCADE)
-	image = models.ImageField(upload_to='profile_image', blank=True)
+	posts = models.ForeignKey(Post, blank=True, null= True, default=None, on_delete=models.CASCADE)
+	image = models.ForeignKey(ProfileImage, null=True, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.user.username
@@ -59,15 +72,3 @@ class Friend(models.Model):
 		verbose_name_plural = 'Friends'
 
 
-# class ProfileImage(models.Model):
-# 	image = models.ImageField(upload_to='profile_image', blank=True)
-# 	is_active = models.BooleanField(default=True)
-# 	created = models.DateTimeField(auto_now_add=True, auto_now=False)
-# 	update = models.DateTimeField(auto_now_add=False, auto_now=True)
-#
-# 	def __str__(self):
-# 		return "%s" % self.id
-#
-# 	class Meta:
-# 		verbose_name = 'Фотография'
-# 		verbose_name_plural = 'Фотографии'

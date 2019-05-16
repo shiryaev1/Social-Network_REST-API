@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from .forms import RegistrationForm
 from my_profile.models import Post, Tag
-from landing.models import Friend
+from landing.models import Friend, ProfileImage, UserProfile
 
 
 def register(request):
@@ -64,7 +64,7 @@ def view_profile(request, pk=None):
         'tags': tags,
         'friends': friends,
         'users': users,
-        'followers': followers
+        'followers': followers,
 
     }
 

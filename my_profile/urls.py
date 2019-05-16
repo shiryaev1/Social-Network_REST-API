@@ -21,4 +21,6 @@ urlpatterns = [
     # path('edit/profile/', EditProfileInformation.as_view(), name='edit_profile'),
     re_path(r'^edit/profile/(?P<pk>\d+)/$', EditProfileInformation.as_view(),
             name='edit_profile_url'),
+    path('profile/image', AddProfileImage.as_view(),
+            name='add_profile_image_url'),
 ]

@@ -13,5 +13,8 @@ class UserProfileAdmin(admin.ModelAdmin):
 admin.site.register(UserProfile,UserProfileAdmin)
 
 
+admin.site.register(ProfileImage)
+
+
 admin.site.register(Friend)
 
