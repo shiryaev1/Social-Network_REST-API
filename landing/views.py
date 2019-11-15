@@ -12,7 +12,7 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('accounts:login')
         else:
             return HttpResponse(
                 'You have an error while filling the form ,'
@@ -68,7 +68,7 @@ def view_profile(request, pk=None):
 
     }
 
-    return render(request, 'accounts/profile2.html', args)
+    return render(request, 'my_profile/home.html', args)
 
 
 def change_friends(request, operation, pk):

@@ -17,18 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from Social_Nerwork.router import router
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('landing.urls'), name='accounts'),
     path('', include('my_profile.urls')),
-    path('api/', include(router.urls)),
     path('chat/', include('chat.urls',)),
     path('oauth/', include('social_django.urls'))
-
-
 ]
 
 if settings.DEBUG:
