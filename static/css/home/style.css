@@ -8751,3 +8751,14 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+#create_post{
+  height: 55%;
+}
+
+#icons{
+  position: absolute;
+    right: 0%;
+    top: 58%;
+    font-size: 23px;
+}

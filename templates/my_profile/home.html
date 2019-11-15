@@ -5,10 +5,10 @@
     <title>TalkIn</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{% static 'css/home/open-iconic-bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/home/animate.css' %}">
@@ -37,24 +37,27 @@
 			<h1 id="colorlib-logo"><a href="index.html"><span class="img" style="background-image: url({% static 'media/profile_image/author.jpg' %});"></span>Louie Smith</a></h1>
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
-					<li class="colorlib-active"><a href="index.html">My profile</a></li>
-					<li><a href="collection.html">Collection</a></li>
-					<li><a href="about.html">About Me</a></li>
-					<li><a href="services.html">My Services</a></li>
-					<li><a href="blog.html">Blog</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li class="colorlib-active"><a href="{% url 'profile' %}">My profile</a></li>
+					<li><a href="collection.html">Photos</a></li>
+					<li><a href="about.html">About me</a></li>
+					<li><a href="services.html">News</a></li>
+					<li><a href="blog.html">Friends</a></li>
+					<li><a href="contact.html">Edit profile</a></li>
 				</ul>
 			</nav>
 
 			<div class="colorlib-footer">
 				<h3>Newsletter</h3>
 				<div class="d-flex justify-content-center">
-					<form action="#" class="colorlib-subscribe-form">
-            <div class="form-group d-flex">
-            	<div class="icon"><span class="icon-paper-plane"></span></div>
-              <input type="text" class="form-control" placeholder="Enter Email Address">
-            </div>
-          </form>
+					<form method="post" action="" class="colorlib-subscribe-form">
+                        {% csrf_token %}
+                        <div class="form-group d-flex" id="create_post">
+                            <button class="btn">
+                                <i id="icons" class="fa fa-share-square" aria-hidden="true"></i>
+                            </button>
+                              {{ post_form.content}}
+                        </div>
+                    </form>
 				</div>
 			</div>
 		</aside> <!-- END COLORLIB-ASIDE -->
@@ -205,11 +208,12 @@
   <script src="{% static 'js/home/aos.js' %}"></script>
   <script src="{% static 'js/home/jquery.animateNumber.min.js' %}"></script>
   <script src="{% static 'js/home/bootstrap-datepicker.js' %}"></script>
-{#  <script src="js/jquery.timepicker.min.js"></script>{% static 'js/home/j' %}#}
+  <script src="https://use.fontawesome.com/cf1bf25127.js"></script>
   <script src="{% static 'js/home/scrollax.min.js' %}"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="{% static 'js/home/google-map.js' %}"></script>
   <script src="{% static 'js/home/main.js' %}"></script>
+
 
   </body>
 </html>

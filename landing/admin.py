@@ -4,7 +4,7 @@ from .models import *
 
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = [field.name for field in UserProfile._meta.fields ]
-    search_fields = ["username"]
+    search_fields = ["id", "username"]
 
     class Meta:
         model = UserProfile

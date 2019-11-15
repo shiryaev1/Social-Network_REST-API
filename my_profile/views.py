@@ -1,5 +1,7 @@
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404
 from django.shortcuts import render
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 from django.shortcuts import redirect
 from django.contrib import auth
 from django.shortcuts import get_object_or_404, HttpResponse
@@ -9,22 +11,36 @@ from my_profile.forms import TagForm, PostForm
 from landing.models import UserProfile
 
 
-class PostCreate(View):
-    def get(self,request):
-        form = PostForm()
-        return render(request,'my_profile/post_create.html',context={'form':form})
+class ViewProfile(View):
 
-    def post(self,request):
-        bount_form = PostForm(request.POST, request.FILES)
-        if bount_form.is_valid():
-            if 'image' in request.FILES:
-                bount_form.image = request.FILES['image']
-            bount_form.save(request.user)
-            return redirect('accounts:view_profile')
-        else:
-            print(bount_form.errors)
-        context = {'form': bount_form}
-        return render(request,'my_profile/post_create.html', context)
+    template_name = 'my_profile/home.html'
+
+    def get(self, request):
+        try:
+            user = User.objects.get(id=request.user.id)
+        except ObjectDoesNotExist:
+            raise Http404
+        args = {
+            'user': user,
+            'post_form': PostForm(),
+        }
+        return render(request, self.template_name, args)
+
+    def post(self, request):
+        try:
+            user = User.objects.get(id=request.user.id)
+        except ObjectDoesNotExist:
+            return Http404
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.save(user)
+            # return redirect('accounts:view_profile_with_pk')
+            form = PostForm()
+        args = {
+            'user': user,
+            'post_form': form,
+        }
+        return render(request, self.template_name, args)
 
 
 class PostUpdate(View):
@@ -76,58 +92,6 @@ def posts_list(request):
     return render(request, 'my_profile/posts.html', context)
 
 
-class TagDetail(View):
-    def get(self,request,slug):
-        tag = get_object_or_404(Tag,slug__iexact=slug)
-        context = {'tag': tag}
-        return render(request,'my_profile/tag_detail.html', context)
-
-
-class TagCreate(View):
-    def get(self,request):
-        form = TagForm()
-        context = {'form': form}
-        return render(request,'my_profile/tag_create.html', context)
-
-    def post(self,request):
-        bount_form = TagForm(request.POST)
-        if bount_form.is_valid():
-            new_tag = bount_form.save()
-            return redirect(new_tag)
-        context = {'form': bount_form}
-        return render(request,'my_profile/tag_create.html', context)
-
-
-class TagUpdate(View):
-    def get(self,request,slug):
-        tag = Tag.objects.get(slug__iexact=slug)
-        bount_form = TagForm(instance=tag)
-        context = {
-            'form': bount_form,
-            'tag': tag
-        }
-
-        return render(request, 'my_profile/tag_update_form.html', context)
-
-    def post(self,request,slug):
-        tag = Tag.objects.get(slug__iexact=slug)
-        bount_form = TagForm(request.POST,instance=tag)
-        if bount_form.is_valid():
-            new_form = bount_form.save()
-            return redirect(new_form)
-        context = {
-            'form': bount_form,
-            'tag': tag
-        }
-        return render(request,'my_profile/tag_update_form.html', context)
-
-
-def tags_list(request):
-    tags = Tag.objects.all()
-    context = {'tags': tags}
-    return render(request,'my_profile/tags_list.html',context)
-
-
 def profile_information(request, pk=None):
     if pk:
         if int(pk) == request.user.id:
@@ -139,21 +103,6 @@ def profile_information(request, pk=None):
         'user': user,
     }
     return render(request, 'accounts/profile_information.html', context)
-
-
-# class EditProfileInformation(View):
-#     def get(self,request):
-#         edit_form = EditProfileInformationForm()
-#         context = {'form': edit_form}
-#         return render(request, 'accounts/edit_profile.html', context)
-#
-#     def post(self,request):
-#         edit_bount_form = EditProfileInformationForm(request.POST or None)
-#         if edit_bount_form.is_valid():
-#             new_post = edit_bount_form.save(request.user)
-#             return redirect('accounts:view_profile')
-#         context = {'form': edit_bount_form}
-#         return render(request, 'accounts/edit_profile.html', context)
 
 
 class EditProfileInformation(View):

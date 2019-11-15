@@ -31,7 +31,7 @@ def view_profile(request, pk=None):
     followers = None
     if pk:
         if int(pk) == request.user.id:
-            return redirect('accounts:view_profile')
+            return redirect('accounts:view_profile_with_pk')
         user = User.objects.get(pk=pk)
         user_post = Post.objects.filter(author_id=int(pk)).order_by('-created')
         last_minute = datetime.now(tz=timezone.utc) - timedelta(1)

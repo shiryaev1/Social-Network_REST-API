@@ -2,6 +2,8 @@ from django.urls import path, re_path
 from django.contrib.auth.views import (
 	LoginView, LogoutView,
 )
+
+from my_profile.views import ViewProfile
 from . import views
 
 app_name = 'accounts'
@@ -12,9 +14,11 @@ urlpatterns = [
          name='login'),
     path('logout/', LogoutView.as_view(next_page='posts_list_url'),
          name='logout'),
-    re_path(r'^profile/(?P<pk>\d+)/$', views.view_profile,
-            name='view_profile_with_pk'),
-    path('profile/', views.view_profile, name='view_profile'),
+    # re_path(r'^profile/(?P<id>\d+)/', ViewProfile.as_view(), name='profile'),
+
+    # re_path(r'^profile/(?P<id>\d+)/$', views.view_profile,
+    #         name='view_profile_with_pk'),
+    # path('profile/', views.view_profile, name='view_profile'),
     re_path(r'^connect/(?P<operation>.+)/(?P<pk>\d+)/$', views.change_friends,
             name='change_friends'),
     path('friends/', views.view_friends, name='view_friends'),
