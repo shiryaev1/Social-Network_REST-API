@@ -5121,7 +5121,8 @@ button.bg-dark:focus {
 .d-flex {
   display: -webkit-box !important;
   display: -ms-flexbox !important;
-  display: flex !important; }
+  display: flex !important;
+}
 
 .d-inline-flex {
   display: -webkit-inline-box !important;
@@ -8753,12 +8754,77 @@ textarea.form-control {
     stroke-dashoffset: -136px; } }
 
 #create_post{
-  height: 55%;
+  height: 85px;
+  width: 370px;
+
 }
 
-#icons{
+#icons-share{
   position: absolute;
-    right: 0%;
-    top: 58%;
-    font-size: 23px;
+  right: 4%;
+  top: 58%;
+  font-size: 23px;
 }
+
+#icons-paperclip{
+  position: absolute;
+  right: 12%;
+  top: 58%;
+  font-size: 23px;
+}
+
+/*#id_image{*/
+/*  background-image: url("/static/media/profile_image/paperclip256_24843.png");*/
+/*}*/
+
+textarea[name="content"] {
+  position: relative;
+  bottom: 38px;
+}
+
+#img-id {
+  position:relative;
+  border:1px solid silver;
+  width: 300px;
+  height: 400px;
+  max-width:300px;
+  max-height:400px;
+  /*overflow:hidden;*/
+  top: -67px;
+}
+
+#post-img{
+  position:absolute;
+  width: 300px;
+  height: 400px;
+  max-height: 400px;
+  max-width: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.d-flex input[type=file]{
+  position: absolute;
+  top: 49px;
+  right: 39px;
+  width: 2px;
+  height: 22px;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+#id_content{
+  position: relative;
+    right: 13px;
+}
+
+
+#id_image:not(:disabled):not(.disabled) {
+    cursor: pointer; }

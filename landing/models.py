@@ -32,7 +32,7 @@ class UserProfile(models.Model):
 	phone = models.IntegerField(default=0,blank=True)
 	sex = models.CharField(max_length=1, default='M')
 	posts = models.ForeignKey(Post, blank=True, null= True, default=None, on_delete=models.CASCADE)
-	image = models.ForeignKey(ProfileImage, null=True, on_delete=models.CASCADE)
+	image = models.ForeignKey(ProfileImage, blank=True, null=True, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.user.username

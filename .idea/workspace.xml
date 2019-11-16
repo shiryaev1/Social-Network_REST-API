@@ -3,29 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="c6ee6b03-249e-4727-92bb-329520f0852d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Social_Nerwork/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Social_Nerwork/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/landing/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/landing/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/landing/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/landing/migrations/0002_auto_20190426_1639.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/landing/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/landing/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/landing/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/landing/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/landing/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/landing/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/landing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/landing/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_profile/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_profile/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_profile/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_profile/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_profile/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_profile/migrations/0002_auto_20190420_2343.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_profile/migrations/0003_auto_20190420_2345.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_profile/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_profile/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_profile/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_profile/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_profile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_profile/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/home/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/home/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/include/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/include/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/accounts/reg_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/reg_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/my_profile/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_profile/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/my_profile/tag_create.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/my_profile/tag_detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/my_profile/tag_update_form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/my_profile/tags_list.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,8 +32,8 @@
       <list>
         <option value="JavaScript File" />
         <option value="Python Script" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -58,22 +45,22 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/js/home" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/my_profile" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\nikit\PycharmProjects\Social_Nerwork\static\media\profile_image" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/static/js/home" />
+      <recent name="$PROJECT_DIR$/templates/my_profile" />
       <recent name="$PROJECT_DIR$/static/media/profile_image" />
+      <recent name="$PROJECT_DIR$/static/js/home" />
       <recent name="$PROJECT_DIR$/static/css/home" />
       <recent name="$PROJECT_DIR$/static/css" />
-      <recent name="C:\Users\nikit\PycharmProjects\Social_Nerwork\chat" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nikit\PycharmProjects\Social_Nerwork\static\media\profile_image" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -234,7 +221,13 @@
       <workItem from="1573736520210" duration="3646000" />
       <workItem from="1573760060428" duration="6890000" />
       <workItem from="1573807822137" duration="6914000" />
-      <workItem from="1573815248486" duration="2067000" />
+      <workItem from="1573815248486" duration="3021000" />
+      <workItem from="1573820794571" duration="4413000" />
+      <workItem from="1573826785336" duration="5373000" />
+      <workItem from="1573832609581" duration="5454000" />
+      <workItem from="1573840569953" duration="3947000" />
+      <workItem from="1573894775983" duration="1414000" />
+      <workItem from="1573901251245" duration="6120000" />
     </task>
     <servers />
   </component>

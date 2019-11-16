@@ -18,6 +18,7 @@ def register(request):
                 'You have an error while filling the form ,'
                 ' dont forget to set more complex password'
                 )
+
     else:
         form = RegistrationForm()
 
@@ -80,7 +81,7 @@ def change_friends(request, operation, pk):
         elif operation == 'remove':
             Friend.lose_friend(request.user, friend)
             Friend.lose_friend(friend, request.user)
-    return redirect('accounts:view_profile')
+    return redirect('profile')
 
 
 def view_friends(request):

@@ -37,11 +37,11 @@ class EditProfileInformationForm(forms.ModelForm):
         fields = ['description', 'city', 'website', 'phone', 'sex', 'image']
 
         widgets = {
-            'description': forms.Textarea(attrs={'class': 'form-control'}),
-            'city': forms.TextInput(attrs={'class': 'form-control'}),
-            'website': forms.TextInput(attrs={'class': 'form-control'}),
-            'phone': forms.NumberInput(attrs={'class': 'form-control'}),
-            'sex': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': "Write about yourself ..."}),
+            'city': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "City"}),
+            'website': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Website"}),
+            'phone': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': "Phone"}),
+            'sex': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Sex"}),
 
         }
 

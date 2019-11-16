@@ -7,8 +7,12 @@ from django.contrib import auth
 from django.shortcuts import get_object_or_404, HttpResponse
 from my_profile.models import *
 from landing.forms import EditProfileInformationForm, AddProfileImageForm
-from my_profile.forms import TagForm, PostForm
-from landing.models import UserProfile
+from my_profile.forms import PostForm
+from landing.models import UserProfile, Friend
+
+
+def user_photos_view(request):
+    return render(request, 'my_profile/edit.html')
 
 
 class ViewProfile(View):
@@ -23,6 +27,7 @@ class ViewProfile(View):
         args = {
             'user': user,
             'post_form': PostForm(),
+            'posts': Post.objects.filter(author=user).order_by('-id')
         }
         return render(request, self.template_name, args)
 
@@ -34,11 +39,12 @@ class ViewProfile(View):
         form = PostForm(request.POST)
         if form.is_valid():
             form.save(user)
-            # return redirect('accounts:view_profile_with_pk')
             form = PostForm()
         args = {
             'user': user,
             'post_form': form,
+            'posts': Post.objects.filter(author=user).order_by('-id')
+
         }
         return render(request, self.template_name, args)
 
@@ -106,13 +112,14 @@ def profile_information(request, pk=None):
 
 
 class EditProfileInformation(View):
-    def get(self,request, pk):
+    def get(self, request, pk):
+        # user = User.objects.get(id=id)
         profile = UserProfile.objects.get(pk=pk)
         edit_form = EditProfileInformationForm(instance=profile)
         context = {'form': edit_form, 'profile': profile}
-        return render(request, 'accounts/update_edit_profile.html', context)
+        return render(request, 'my_profile/edit.html', context)
 
-    def post(self,request, pk):
+    def post(self, request, pk):
         profile = UserProfile.objects.get(pk=pk)
         edit_bount_form = EditProfileInformationForm(request.POST or None,
                                                      request.FILES, instance=profile)
@@ -120,11 +127,11 @@ class EditProfileInformation(View):
             if 'image' in request.FILES:
                 edit_bount_form.image = request.FILES['image']
             edit_bount_form.save(request.user)
-            return redirect('accounts:view_profile')
+            return redirect('profile')
         else:
             print(edit_bount_form.errors)
         context = {'form': edit_bount_form}
-        return render(request, 'accounts/update_edit_profile.html', context)
+        return render(request, 'my_profile/edit.html', context)
 
 
 class AddProfileImage(View):
@@ -184,3 +191,21 @@ def remove_like(request):
     return redirect('posts_list_url')
 
 
+def peoples(request):
+    users = User.objects.exclude(pk=request.user.pk)
+    # friends = Friend.objects.all()
+    try:
+        friend = Friend.objects.get(current_user=request.user)
+        friends = friend.users.all()
+        followers = friends.count()
+
+    except:
+        friends = None
+        followers = None
+    print(users)
+    print(friends)
+    args = {
+        "users": users,
+        "friends": friends,
+    }
+    return render(request, 'my_profile/collection.html', args)
