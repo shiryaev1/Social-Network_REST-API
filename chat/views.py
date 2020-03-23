@@ -1,4 +1,6 @@
 from django.shortcuts import render, Http404
+from django.contrib.auth.models import User
+from django.urls import reverse
 
 from .models import Message
 
@@ -13,10 +15,20 @@ def room(request, room_name):
     if request.user.id != fid and request.user.id != sid:
         raise Http404('There is no such chat')
     myself = request.user
-    chat_messages = Message.objects.filter(group_name=room_name).order_by("created")[:100]
-    return render(request, 'chat/room.html', {
+    companion = User.objects.get(id=sid)
+    companions = User.objects.exclude(message__isnull=True).exclude(
+        message__user=request.user
+    )
+    chat_messages = Message.objects.filter(
+        group_name=room_name
+    ).order_by("created")[:100]
+
+    return render(request, 'my_profile/test.html', {
         'chat_messages': chat_messages,
         'room_name': room_name,
-        'myself': myself
+        'myself': myself,
+        'companion': companion,
+        'companions': companions,
+        # 'room': reverse('room', kwargs={'room_name': room_name}),
 
     })

@@ -1,0 +1,952 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block content %}
+    <aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
+        {% if user.userprofile.image %}
+			<h1 id="colorlib-logo"><a href="index.html"><span class="img" style="background-image: url({{ user.userprofile.image.url }});"></span>{{ user.first_name }} {{ user.last_name }}</a></h1>
+        {% else %}
+            <h1 id="colorlib-logo"><a href="index.html"><span class="img" style="background-image: url({% static 'media/profile_image/anon-user.jpg' %});"></span>{{ user.first_name }} {{ user.last_name }}</a></h1>
+
+        {% endif %}
+			<nav id="colorlib-main-menu" role="navigation">
+				<ul>
+					<li class="colorlib-active"><a href="{% url 'profile' %}">My profile</a></li>
+					<li><a href="{% url 'edit_profile_url' pk=user.id %}">Edit profile</a></li>
+					<li><a href="about.html">About me</a></li>
+					<li><a href="services.html">News</a></li>
+					<li><a href="{% url 'peoples' %}">Peoples</a></li>
+					<li><a href="contact.html">Photos</a></li>
+				</ul>
+			</nav>
+    </aside>
+	<div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+
+		<div id="colorlib-main">
+			<section class="ftco-section ftco-bread">
+				<div class="container">
+					<div class="row no-gutters slider-text justify-content-center align-items-center">
+	          <div class="col-md-8 ftco-animate">
+	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact</span></p>
+	            <h1 class="bread">Contact</h1>
+	          </div>
+	        </div>
+				</div>
+			</section>
+
+	      <div class="container">
+
+	        <div class="row d-flex mb-5 contact-info" style="position: relative;
+                                                             right: 147px;">
+
+
+<style class="cp-pen-styles">body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #27ae60;
+  font-family: "proxima-nova", "Source Sans Pro", sans-serif;
+  font-size: 1em;
+  letter-spacing: 0.1px;
+  color: #32465a;
+  text-rendering: optimizeLegibility;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  -webkit-font-smoothing: antialiased;
+}
+
+#frame {
+  width: 95%;
+  min-width: 360px;
+  max-width: 1000px;
+  height: 92vh;
+  min-height: 300px;
+  max-height: 720px;
+  background: #E6EAEA;
+}
+@media screen and (max-width: 360px) {
+  #frame {
+    width: 100%;
+    height: 100vh;
+  }
+}
+#frame #sidepanel {
+  float: left;
+  min-width: 280px;
+  max-width: 340px;
+  width: 40%;
+  height: 100%;
+  background: #2c3e50;
+  color: #f5f5f5;
+  overflow: hidden;
+  position: relative;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel {
+    width: 58px;
+    min-width: 58px;
+  }
+}
+
+{#span.chat-img.pull-right{#}
+{#    display: inline-block;#}
+{#    margin-right: 607px;#}
+{#}#}
+
+
+
+#frame #sidepanel #profile {
+  width: 80%;
+  margin: 25px auto;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #profile {
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px 0 0 0;
+    background: #32465a;
+  }
+}
+#frame #sidepanel #profile.expanded .wrap {
+  height: 210px;
+  line-height: initial;
+}
+#frame #sidepanel #profile.expanded .wrap p {
+  margin-top: 20px;
+}
+#frame #sidepanel #profile.expanded .wrap i.expand-button {
+  -moz-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+#frame #sidepanel #profile .wrap {
+  height: 60px;
+  line-height: 60px;
+  overflow: hidden;
+  -moz-transition: 0.3s height ease;
+  -o-transition: 0.3s height ease;
+  -webkit-transition: 0.3s height ease;
+  transition: 0.3s height ease;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #profile .wrap {
+    height: 55px;
+  }
+}
+#frame #sidepanel #profile .wrap img {
+  width: 50px;
+  border-radius: 50%;
+  padding: 3px;
+  border: 2px solid #e74c3c;
+  height: auto;
+  float: left;
+  cursor: pointer;
+  -moz-transition: 0.3s border ease;
+  -o-transition: 0.3s border ease;
+  -webkit-transition: 0.3s border ease;
+  transition: 0.3s border ease;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #profile .wrap img {
+    width: 40px;
+    margin-left: 4px;
+  }
+}
+#frame #sidepanel #profile .wrap img.online {
+  border: 2px solid #2ecc71;
+}
+#frame #sidepanel #profile .wrap img.away {
+  border: 2px solid #f1c40f;
+}
+#frame #sidepanel #profile .wrap img.busy {
+  border: 2px solid #e74c3c;
+}
+#frame #sidepanel #profile .wrap img.offline {
+  border: 2px solid #95a5a6;
+}
+#frame #sidepanel #profile .wrap p {
+  float: left;
+  margin-left: 15px;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #profile .wrap p {
+    display: none;
+  }
+}
+#frame #sidepanel #profile .wrap i.expand-button {
+  float: right;
+  margin-top: 23px;
+  font-size: 0.8em;
+  cursor: pointer;
+  color: #435f7a;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #profile .wrap i.expand-button {
+    display: none;
+  }
+}
+#frame #sidepanel #profile .wrap #status-options {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  width: 150px;
+  margin: 70px 0 0 0;
+  border-radius: 6px;
+  z-index: 99;
+  line-height: initial;
+  background: #435f7a;
+  -moz-transition: 0.3s all ease;
+  -o-transition: 0.3s all ease;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #profile .wrap #status-options {
+    width: 58px;
+    margin-top: 57px;
+  }
+}
+#frame #sidepanel #profile .wrap #status-options.active {
+  opacity: 1;
+  visibility: visible;
+  margin: 75px 0 0 0;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #profile .wrap #status-options.active {
+    margin-top: 62px;
+  }
+}
+#frame #sidepanel #profile .wrap #status-options:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid #435f7a;
+  margin: -8px 0 0 24px;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #profile .wrap #status-options:before {
+    margin-left: 23px;
+  }
+}
+#frame #sidepanel #profile .wrap #status-options ul {
+  overflow: hidden;
+  border-radius: 6px;
+}
+#frame #sidepanel #profile .wrap #status-options ul li {
+  padding: 15px 0 30px 18px;
+  display: block;
+  cursor: pointer;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #profile .wrap #status-options ul li {
+    padding: 15px 0 35px 22px;
+  }
+}
+#frame #sidepanel #profile .wrap #status-options ul li:hover {
+  background: #496886;
+}
+#frame #sidepanel #profile .wrap #status-options ul li span.status-circle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 5px 0 0 0;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #profile .wrap #status-options ul li span.status-circle {
+    width: 14px;
+    height: 14px;
+  }
+}
+#frame #sidepanel #profile .wrap #status-options ul li span.status-circle:before {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  margin: -3px 0 0 -3px;
+  background: transparent;
+  border-radius: 50%;
+  z-index: 0;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #profile .wrap #status-options ul li span.status-circle:before {
+    height: 18px;
+    width: 18px;
+  }
+}
+#frame #sidepanel #profile .wrap #status-options ul li p {
+  padding-left: 12px;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #profile .wrap #status-options ul li p {
+    display: none;
+  }
+}
+#frame #sidepanel #profile .wrap #status-options ul li#status-online span.status-circle {
+  background: #2ecc71;
+}
+#frame #sidepanel #profile .wrap #status-options ul li#status-online.active span.status-circle:before {
+  border: 1px solid #2ecc71;
+}
+#frame #sidepanel #profile .wrap #status-options ul li#status-away span.status-circle {
+  background: #f1c40f;
+}
+#frame #sidepanel #profile .wrap #status-options ul li#status-away.active span.status-circle:before {
+  border: 1px solid #f1c40f;
+}
+#frame #sidepanel #profile .wrap #status-options ul li#status-busy span.status-circle {
+  background: #e74c3c;
+}
+#frame #sidepanel #profile .wrap #status-options ul li#status-busy.active span.status-circle:before {
+  border: 1px solid #e74c3c;
+}
+#frame #sidepanel #profile .wrap #status-options ul li#status-offline span.status-circle {
+  background: #95a5a6;
+}
+#frame #sidepanel #profile .wrap #status-options ul li#status-offline.active span.status-circle:before {
+  border: 1px solid #95a5a6;
+}
+#frame #sidepanel #profile .wrap #expanded {
+  padding: 100px 0 0 0;
+  display: block;
+  line-height: initial !important;
+}
+#frame #sidepanel #profile .wrap #expanded label {
+  float: left;
+  clear: both;
+  margin: 0 8px 5px 0;
+  padding: 5px 0;
+}
+#frame #sidepanel #profile .wrap #expanded input {
+  border: none;
+  margin-bottom: 6px;
+  background: #32465a;
+  border-radius: 3px;
+  color: #f5f5f5;
+  padding: 7px;
+  width: calc(100% - 43px);
+}
+body{
+background: #f5f5f5;
+}
+
+#frame #sidepanel #profile .wrap #expanded input:focus {
+  outline: none;
+  background: #435f7a;
+}
+#frame #sidepanel #search {
+  border-top: 1px solid #32465a;
+  border-bottom: 1px solid #32465a;
+  font-weight: 300;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #search {
+    display: none;
+  }
+}
+#frame #sidepanel #search label {
+  position: absolute;
+  margin: 10px 0 0 20px;
+}
+#frame #sidepanel #search input {
+  font-family: "proxima-nova",  "Source Sans Pro", sans-serif;
+  padding: 10px 0 10px 46px;
+  width: calc(100% - 25px);
+  border: none;
+  background: #32465a;
+  color: #f5f5f5;
+}
+#frame #sidepanel #search input:focus {
+  outline: none;
+  background: #435f7a;
+}
+#frame #sidepanel #search input::-webkit-input-placeholder {
+  color: #f5f5f5;
+}
+#frame #sidepanel #search input::-moz-placeholder {
+  color: #f5f5f5;
+}
+#frame #sidepanel #search input:-ms-input-placeholder {
+  color: #f5f5f5;
+}
+#frame #sidepanel #search input:-moz-placeholder {
+  color: #f5f5f5;
+}
+#frame #sidepanel #contacts {
+  height: calc(100% - 177px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #contacts {
+    height: calc(100% - 149px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  #frame #sidepanel #contacts::-webkit-scrollbar {
+    display: none;
+  }
+}
+#frame #sidepanel #contacts.expanded {
+  height: calc(100% - 334px);
+}
+#frame #sidepanel #contacts::-webkit-scrollbar {
+  width: 8px;
+  background: #2c3e50;
+}
+#frame #sidepanel #contacts::-webkit-scrollbar-thumb {
+  background-color: #243140;
+}
+#frame #sidepanel #contacts ul li.contact {
+  position: relative;
+  padding: 10px 0 15px 0;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #contacts ul li.contact {
+    padding: 6px 0 46px 8px;
+  }
+}
+#frame #sidepanel #contacts ul li.contact:hover {
+  background: #32465a;
+}
+#frame #sidepanel #contacts ul li.contact.active {
+  background: #32465a;
+  border-right: 5px solid #435f7a;
+}
+#frame #sidepanel #contacts ul li.contact.active span.contact-status {
+  border: 2px solid #32465a !important;
+}
+#frame #sidepanel #contacts ul li.contact .wrap {
+  width: 88%;
+  margin: 0 auto;
+  position: relative;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #contacts ul li.contact .wrap {
+    width: 100%;
+  }
+}
+#frame #sidepanel #contacts ul li.contact .wrap span {
+  position: absolute;
+  left: 0;
+  margin: -2px 0 0 -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #2c3e50;
+  background: #95a5a6;
+}
+#frame #sidepanel #contacts ul li.contact .wrap span.online {
+  background: #2ecc71;
+}
+#frame #sidepanel #contacts ul li.contact .wrap span.away {
+  background: #f1c40f;
+}
+#frame #sidepanel #contacts ul li.contact .wrap span.busy {
+  background: #e74c3c;
+}
+#frame #sidepanel #contacts ul li.contact .wrap img {
+  width: 40px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 10px;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #contacts ul li.contact .wrap img {
+    margin-right: 0px;
+  }
+}
+#frame #sidepanel #contacts ul li.contact .wrap .meta {
+  padding: 5px 0 0 0;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #contacts ul li.contact .wrap .meta {
+    display: none;
+  }
+}
+#frame #sidepanel #contacts ul li.contact .wrap .meta .name {
+  font-weight: 600;
+}
+#frame #sidepanel #contacts ul li.contact .wrap .meta .preview {
+  margin: 5px 0 0 0;
+  padding: 0 0 1px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -moz-transition: 1s all ease;
+  -o-transition: 1s all ease;
+  -webkit-transition: 1s all ease;
+  transition: 1s all ease;
+}
+#frame #sidepanel #contacts ul li.contact .wrap .meta .preview span {
+  position: initial;
+  border-radius: initial;
+  background: none;
+  border: none;
+  padding: 0 2px 0 0;
+  margin: 0 0 0 1px;
+  opacity: .5;
+}
+#frame #sidepanel #bottom-bar {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+#frame #sidepanel #bottom-bar button {
+  float: left;
+  border: none;
+  width: 50%;
+  padding: 10px 0;
+  background: #32465a;
+  color: #f5f5f5;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-family: "proxima-nova",  "Source Sans Pro", sans-serif;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #bottom-bar button {
+    float: none;
+    width: 100%;
+    padding: 15px 0;
+  }
+}
+#frame #sidepanel #bottom-bar button:focus {
+  outline: none;
+}
+#frame #sidepanel #bottom-bar button:nth-child(1) {
+  border-right: 1px solid #2c3e50;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #bottom-bar button:nth-child(1) {
+    border-right: none;
+    border-bottom: 1px solid #2c3e50;
+  }
+}
+#frame #sidepanel #bottom-bar button:hover {
+  background: #435f7a;
+}
+#frame #sidepanel #bottom-bar button i {
+  margin-right: 3px;
+  font-size: 1em;
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #bottom-bar button i {
+    font-size: 1.3em;
+  }
+}
+@media screen and (max-width: 735px) {
+  #frame #sidepanel #bottom-bar button span {
+    display: none;
+  }
+}
+#frame .content {
+  float: right;
+  width: 60%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+@media screen and (max-width: 735px) {
+  #frame .content {
+    width: calc(100% - 58px);
+    min-width: 300px !important;
+  }
+}
+@media screen and (min-width: 900px) {
+  #frame .content {
+    width: calc(100% - 340px);
+  }
+}
+#frame .content .contact-profile {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background: #dad0d0;
+}
+#frame .content .contact-profile img {
+  width: 40px;
+  border-radius: 50%;
+  float: left;
+  margin: 9px 12px 0 9px;
+}
+#frame .content .contact-profile p {
+  float: left;
+}
+#frame .content .contact-profile .social-media {
+  float: right;
+}
+#frame .content .contact-profile .social-media i {
+  margin-left: 14px;
+  cursor: pointer;
+}
+#frame .content .contact-profile .social-media i:nth-last-child(1) {
+  margin-right: 20px;
+}
+#frame .content .contact-profile .social-media i:hover {
+  color: #435f7a;
+}
+#frame .content .messages {
+  height: auto;
+  min-height: calc(100% - 93px);
+  max-height: calc(100% - 93px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+@media screen and (max-width: 735px) {
+  #frame .content .messages {
+    max-height: calc(100% - 105px);
+  }
+}
+#frame .content .messages::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+#frame .content .messages::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+#frame .content .messages ul li {
+  display: inline-block;
+  clear: both;
+  float: left;
+  {#background: #435f7a;#}
+  {#color: #f5f5f5;#}
+  margin: 15px 15px 5px 15px;
+  width: calc(100% - 25px);
+  font-size: 0.9em;
+}
+#frame .content .messages ul li:nth-last-child(1) {
+  margin-bottom: 20px;
+}
+#frame .content .messages ul li.sent img {
+  margin: 6px 8px 0 0;
+    float: left;
+}
+#frame .content .messages ul li.sent p {
+  background: #435f7a;
+  color: #f5f5f5;
+    float: left;
+}
+#frame .content .messages ul li.replies img {
+  float: right;
+  margin: 6px 0 0 8px;
+}
+#frame .content .messages ul li.replies p {
+  background: #f5f5f5;
+  float: right;
+  color: black;
+}
+#frame .content .messages ul li img {
+  width: 22px;
+  border-radius: 50%;
+  float: left;
+}
+#frame .content .messages ul li p {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 205px;
+  line-height: 130%;
+}
+@media screen and (min-width: 735px) {
+  #frame .content .messages ul li p {
+    max-width: 300px;
+    background: #435f7a;
+    color: #f5f5f5;
+  }
+}
+#frame .content .message-input {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 99;
+}
+#frame .content .message-input .wrap {
+  position: relative;
+}
+#frame .content .message-input .wrap input {
+  font-family: "proxima-nova",  "Source Sans Pro", sans-serif;
+  float: left;
+  border: none;
+  width: calc(100% - 90px);
+  padding: 11px 32px 10px 8px;
+  font-size: 0.8em;
+  color: #32465a;
+}
+@media screen and (max-width: 735px) {
+  #frame .content .message-input .wrap input {
+    padding: 15px 32px 16px 8px;
+  }
+}
+#frame .content .message-input .wrap input:focus {
+  outline: none;
+}
+#frame .content .message-input .wrap .attachment {
+  position: absolute;
+  right: 60px;
+  z-index: 4;
+  margin-top: 10px;
+  font-size: 1.1em;
+  color: #435f7a;
+  opacity: .5;
+  cursor: pointer;
+}
+@media screen and (max-width: 735px) {
+  #frame .content .message-input .wrap .attachment {
+    margin-top: 17px;
+    right: 65px;
+  }
+}
+#frame .content .message-input .wrap .attachment:hover {
+  opacity: 1;
+}
+#frame .content .message-input .wrap button {
+  float: right;
+  border: none;
+  width: 50px;
+  padding: 12px 0;
+  cursor: pointer;
+  background: #32465a;
+  color: #f5f5f5;
+}
+@media screen and (max-width: 735px) {
+  #frame .content .message-input .wrap button {
+    padding: 16px 0;
+  }
+}
+#frame .content .message-input .wrap button:hover {
+  background: #435f7a;
+}
+#frame .content .message-input .wrap button:focus {
+  outline: none;
+}
+{#small.pull-left.text-muted{#}
+        {#margin-left: 84%;#}
+{#        padding-left: 526px;#}
+{#}#}
+
+
+{#.text-muted{#}
+{#    position: relative;#}
+{#    right: -523px;#}
+{#}#}
+
+
+</style></head>
+
+{#<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">#}
+{#        {% if user.userprofile.image %}#}
+{#			<h1 id="colorlib-logo"><a href="index.html"><span class="img" style="background-image: url({{ user.userprofile.image.url }});"></span>{{ user.first_name }} {{ user.last_name }}</a></h1>#}
+{#        {% else %}#}
+{#            <h1 id="colorlib-logo"><a href="index.html"><span class="img" style="background-image: url({% static 'media/profile_image/anon-user.jpg' %});"></span>{{ user.first_name }} {{ user.last_name }}</a></h1>#}
+{##}
+{#        {% endif %}#}
+{#			<nav id="colorlib-main-menu" role="navigation">#}
+{#				<ul>#}
+{#					<li class="colorlib-active"><a href="{% url 'profile' %}">My profile</a></li>#}
+{#					<li><a href="{% url 'edit_profile_url' pk=user.id %}">Edit profile</a></li>#}
+{#					<li><a href="about.html">About me</a></li>#}
+{#					<li><a href="services.html">News</a></li>#}
+{#					<li><a href="{% url 'peoples' %}">Peoples</a></li>#}
+{#					<li><a href="contact.html">Photos</a></li>#}
+{#				</ul>#}
+{#			</nav>#}
+{#    </aside>#}
+<div id="frame">
+	<div id="sidepanel" style="background-color: #d8c9ab;">
+		<div id="profile">
+			<div class="wrap">
+                {% if myself.userprofile.image %}
+				<img id="profile-img" src="{{myself.userprofile.image.url}}" class="online" alt="" />
+                {% else %}
+                <img id="profile-img" src="{% static 'media/profile_image/anon-user.jpg' %}" class="online" alt="" />
+                {% endif %}
+				<p>{{ myself.first_name }} {{ myself.last_name }}</p>
+				<i class="fa fa-chevron-down expand-button" aria-hidden="true"></i>
+				<div id="status-options">
+					<ul>
+						<li id="status-online" class="active"><span class="status-circle"></span> <p>Online</p></li>
+						<li id="status-away"><span class="status-circle"></span> <p>Away</p></li>
+						<li id="status-busy"><span class="status-circle"></span> <p>Busy</p></li>
+						<li id="status-offline"><span class="status-circle"></span> <p>Offline</p></li>
+					</ul>
+				</div>
+				<div id="expanded">
+					<label for="twitter"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></label>
+					<input name="twitter" type="text" value="mikeross" />
+					<label for="twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></label>
+					<input name="twitter" type="text" value="ross81" />
+					<label for="twitter"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></label>
+					<input name="twitter" type="text" value="mike.ross" />
+				</div>
+			</div>
+		</div>
+		<div id="search" style="background-color: #cbb78f;">
+			<label for="" style="background-color: #cbb78f"><i class="fa fa-search" aria-hidden="true"></i></label>
+			<input style="background-color: #cbb78f;" type="text" placeholder="Search contacts..." />
+		</div>
+		<div id="contacts">
+            {% for user_mess in companions%}
+			<ul>
+                <li class="contact">
+					<div class="wrap">
+						<span class="contact-status online"></span>
+                        {% if user_mess.userprofile.image %}
+{#                            <p><a href="{% url 'click' pk=user.pk %}">#}
+                                <img src="{{user_mess.userprofile.image.url}}" alt=""/>
+                            </a></p>
+                        {% else %}
+                            <p><a href="{% url 'click' pk=user.pk %}">
+                                <img src="{% static 'media/profile_image/anon-user.jpg' %}" alt=""/>
+                            </a></p>
+						{% endif %}
+                        <div class="meta">
+							<p class="name">{{user_mess.userprofile.user.first_name}} {{user_mess.userprofile.user.last_name}}</p>
+{#							<p class="preview">{{ last }}</p>#}
+						</div>
+					</div>
+				<li>
+
+			</ul>
+            {% endfor %}
+		</div>
+		<div id="bottom-bar">
+			<button id="addcontact"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Add contact</span></button>
+			<button id="settings"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span>Settings</span></button>
+		</div>
+	</div>
+	<div class="content">
+		<div class="contact-profile">
+			<img src="{{ companion.userprofile.image.url }}" alt="" />
+			<p>{{ companion.userprofile.user.first_name }} {{ companion.userprofile.user.last_name }}</p>
+			<div class="social-media">
+				<i class="fa fa-facebook" aria-hidden="true"></i>
+				<i class="fa fa-twitter" aria-hidden="true"></i>
+				 <i class="fa fa-instagram" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="all_messages" class="messages" style="position: relative;
+                                                    height: -4px;
+                                                    width: 661px;
+                                                    right: 2px;">
+			<ul class="chat">
+                {% if user.is_authenticated %}
+                {% for message in chat_messages %}
+                {% if message.user == user %}
+				<li class="sent">
+                    {% if myself.userprofile.image %}
+					<img src="{{ myself.userprofile.image.url }}" alt="" />
+                    {% else %}
+                    <img src="{% static 'media/profile_image/anon-user.jpg' %}" alt="" />
+                    {% endif %}
+					<p>{{ message.message|safe }}</p>
+                        <small class="pull-right text-muted">
+{#                        <span class="glyphicon glyphicon-time"></span>#}
+                            {{message.created|date:"H:i"}}
+                        </small>
+				</li>
+                {% else %}
+				<li class="replies">
+
+					{% if companion.userprofile.image %}
+					<img src="{{ companion.userprofile.image.url }}" alt="" />
+                    {% else %}
+                    <img src="{% static 'media/profile_image/anon-user.jpg' %}" alt="" />
+                    {% endif %}
+					<p>{{ message.message|safe }}</p>
+                 <small class="pull-left text-muted">
+{#                        <span class="glyphicon glyphicon-time"></span>#}
+                     {{message.created|date:"H:i"}}
+                        </small>
+
+				</li>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+
+			</ul>
+		</div>
+		<div class="message-input">
+			<div class="wrap">
+			<input id="btn-input" style="position: relative;
+                                         bottom: -8px;" type="text" placeholder="Write your message..." />
+			<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+			<button class="submit" id="btn-chat">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+            </button>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src='{% static "js/reconnecting-websocket.min.js" %}'></script>
+<script>
+    $('#all_messages').scrollTop($('#all_messages')[0].scrollHeight);
+    var room_mame = '{{ room_name }}';
+    var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+    var websocket_str= ws_scheme+'://' + window.location.host + '/ws/chat/' + room_mame + '/';
+    var chatSocket = new ReconnectingWebSocket(websocket_str);
+    chatSocket.onmessage = function (e) {
+        var data = JSON.parse(e.data);
+        var message = data['message'];
+        var now_time = data['now_time'];
+        var receive_user = data['user'];
+        var user = "{{user}}";
+        var image = "{{ myself.userprofile.image }}";
+        if (image) {
+            if (receive_user === user) {
+                $('<li class="sent"><span class="chat-img pull-left"><img src="{{ myself.userprofile.image.url }}" <small class=" text-muted"></span>' + '</small><strong class="pull-right primary-font"></strong></div><p>' + message + '</p><small class="pull-right text-muted">' +now_time+'</small></div></li>').appendTo($('.chat'))
+            } else {
+                $('<li class="replies"><span class="chat-img pull-right"><img src="{{ companion.userprofile.image.url }}" <strong class="primary-font">' + '</strong><small class="pull-left text-muted">'  + '</small></div><p>' + message + '</p><small class="pull-left text-muted">' +now_time+'</small></div></li>').appendTo($('.chat'))
+            }
+            };
+        {#else {#}
+        {#    if (receive_user === user) {#}
+        {#        $('<li class="right clearfix"><span class="chat-img pull-left"><img src="{% static 'media/profile_image/anon-user.jpg' %}" alt="User Avatar" class="img-circle"/></span><div class="chat-body clearfix"><div class="header"><small class=" text-muted">' + '</small><strong class="pull-right primary-font">' + '</strong></div><p>' + message + '</p></div></li>').appendTo($('.chat'))#}
+        {#    } else {#}
+        {#        $('<li class="left clearfix"><span class="chat-img pull-left"><img src="{% static 'media/profile_image/anon-user.jpg' %}" alt="User Avatar" class="img-circle"/></span><div class="chat-body clearfix"><div class="header"><strong class="primary-font">' + '</strong><small class="pull-right text-muted">' + '</small></div><p>' + message + '</p></div></li>').appendTo($('.chat'))#}
+        {#    }#}
+        {#}#}
+        $('#all_messages').scrollTop($('#all_messages')[0].scrollHeight);
+        };
+        chatSocket.onclose = function (e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+        $("#btn-input").focus();
+        $("#btn-input").keyup(function(e){
+          if (e.keyCode === 13) {  // enter, return
+                $("#btn-chat").click();
+            }
+        });
+        $("#btn-chat").click(function() {
+          var message = $('#btn-input').val();
+          chatSocket.send(JSON.stringify({
+                'message': message
+          }));
+          $('#btn-input').val('');
+        });
+</script>
+	          <div class="col-md-6 d-flex">
+
+	          </div>
+	        </div>
+	      </div>
+	    </section>
+
+		</div><!-- END COLORLIB-MAIN -->
+	</div><!-- END COLORLIB-PAGE -->
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+{% endblock %}

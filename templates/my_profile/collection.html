@@ -7,12 +7,17 @@
 	<div id="colorlib-page">
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-			<h1 id="colorlib-logo"><a href="index.html"><span class="img" style="background-image: url({% static 'media/profile_image/author.jpg' %});"></span>
+            {% if request.user.userprofile.image %}
+			<h1 id="colorlib-logo"><a href="index.html"><span class="img" style="background-image: url({{ request.user.userprofile.image.url }});"></span>
                 {{ request.user.first_name }} {{ request.user.last_name }}</a></h1>
+            {% else %}
+            <h1 id="colorlib-logo"><a href="index.html"><span class="img" style="background-image: url({% static 'media/profile_image/anon-user.jpg' %});"></span>
+                {{ request.user.first_name }} {{ request.user.last_name }}</a></h1>
+            {% endif %}
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
 					<li class="colorlib-active"><a href="{% url 'profile' %}">My profile</a></li>
-					<li><a href="{% url 'edit_profile_url' pk=user.id %}">Edit profile</a></li>
+					<li><a href="{% url 'edit_profile_url' pk=request.user.id %}">Edit profile</a></li>
 					<li><a href="about.html">About me</a></li>
 					<li><a href="services.html">News</a></li>
 					<li><a href="{% url 'peoples' %}">Peoples</a></li>
@@ -26,7 +31,7 @@
 					<div class="row no-gutters slider-text justify-content-center align-items-center">
 	          <div class="col-md-8 ftco-animate">
 	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Blog</span></p>
-	            <h1 class="bread">Read Our Blog</h1>
+	            <h1 class="bread">Peoples</h1>
 	          </div>
 	        </div>
 				</div>
@@ -40,9 +45,15 @@
 
 			    			<div class="col-md-12">
 			    				<div class="blog-entry ftco-animate d-md-flex">
-										<a href="single.html" class="img img-2" style="background-image: url('/static/media/profile_image/cq_CuMI6m_E.jpg');"></a>
+{#                                    {% for friend in friends %}#}
+                                        {% if user.userprofile.image %}
+										<a href="single.html" class="img img-2" style="background-image: url({{ user.userprofile.image.url }});"></a>
+                                        {% else %}
+                                        <a href="single.html" class="img img-2" style="background-image: url({% static 'media/profile_image/anon-user.jpg' %});"></a>
+                                        {% endif %}
+{#                                    {% endfor %}#}
 										<div class="text text-2 p-4">
-                                          <h3 class="mb-2"><a href="single.html">{{user.first_name}} {{ user.last_name }}</a></h3>
+                                          <h3 class="mb-2"><a href="{% url 'people-profile' pk=user.pk %}">{{user.first_name}} {{ user.last_name }}</a></h3>
                                           <div class="meta-wrap">
                                                             <p class="meta">
                                                 <span>City: {{user.userprofile.city}}</span><br>
@@ -54,7 +65,7 @@
                                             </div>
                                               <p class="mb-4">{{ user.userprofile.description|truncatechars:40 }}</p>
                                                 {% if user in friends %}
-                                                    <p><a href="{% url 'accounts:change_friends' operation='remove' pk=user.pk %}" class ="btn-custom">Remove friend<span class="ion-ios-arrow-forward"></span></a></p>
+                                                    <p><a href="{% url 'accounts:change_friends' operation='remove' pk=user.pk %}" class ="btn-custom">Remove friend<span class="fa fa-share-square"></span></a></p>
                                                 {% else %}
                                                     <p><a href="{% url 'accounts:change_friends' operation='add' pk=user.pk %}" class ="btn-custom">Add friend<span class="fa fa-share-square"></span></a></p>
 

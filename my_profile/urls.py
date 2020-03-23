@@ -18,4 +18,9 @@ urlpatterns = [
     path('profile/image', AddProfileImage.as_view(),
             name='add_profile_image_url'),
     path('profile/peoples', views.peoples, name='peoples'),
+    re_path(r'^people/(?P<pk>\d+)/profile/$', PeopleViewProfile.as_view(),
+            name='people-profile'),
+    re_path(r'^click/(?P<pk>\d+)/$', click_on_the_contact,
+            name='click'),
+
 ]

@@ -8773,9 +8773,6 @@ textarea.form-control {
   font-size: 23px;
 }
 
-/*#id_image{*/
-/*  background-image: url("/static/media/profile_image/paperclip256_24843.png");*/
-/*}*/
 
 textarea[name="content"] {
   position: relative;
@@ -8825,6 +8822,38 @@ textarea[name="content"] {
     right: 13px;
 }
 
+#img-icons{
+  font-size: 27px;
+  position: relative;
+  bottom: -40px;
+  left: 93px;
+}
 
-#id_image:not(:disabled):not(.disabled) {
-    cursor: pointer; }
+#upload-img input[type=file]{
+  position: relative;
+  top: -47px;
+  right: -71px;
+  width: 64px;
+}
+
+/*#edit{*/
+/*  position: relative;*/
+/*    top: 0;*/
+/*}*/
+
+/*input#id_image{*/
+/*  position: relative;*/
+/*    width: 34px;*/
+/*    height: 27px;*/
+/*    right: -87px;*/
+/*    top: -27px;*/
+/*}*/
+
+/*input#image-clear_id{*/
+/*  position: relative;*/
+/*  top: 29px;*/
+/*  right: 350px;*/
+/*}*/
+.ftco-animated{
+  width: 500px;
+}

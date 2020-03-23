@@ -34,7 +34,7 @@ class EditProfileInformationForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ['description', 'city', 'website', 'phone', 'sex', 'image']
+        fields = ['description', 'city', 'website', 'phone', 'sex', 'image',]
 
         widgets = {
             'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': "Write about yourself ..."}),
@@ -42,6 +42,8 @@ class EditProfileInformationForm(forms.ModelForm):
             'website': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Website"}),
             'phone': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': "Phone"}),
             'sex': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Sex"}),
+            'image': forms.FileInput(attrs={'class': 'form-control', 'placeholder': "upload image"}),
+
 
         }
 

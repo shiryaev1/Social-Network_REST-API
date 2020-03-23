@@ -22,5 +22,5 @@ urlpatterns = [
     re_path(r'^connect/(?P<operation>.+)/(?P<pk>\d+)/$', views.change_friends,
             name='change_friends'),
     path('friends/', views.view_friends, name='view_friends'),
-    re_path(r'^view_profile_friend/(?P<pk>\d+)/$', views.view_profile_friend, name='view_profile_friend'),
+    # re_path(r'^view_profile_friend/(?P<pk>\d+)/$', views.view_profile_friend, name='view_profile_friend'),
 ]

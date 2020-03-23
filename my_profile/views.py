@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.views.generic import View, TemplateView
 from django.shortcuts import redirect
 from django.contrib import auth
+
 from django.shortcuts import get_object_or_404, HttpResponse
 from my_profile.models import *
 from landing.forms import EditProfileInformationForm, AddProfileImageForm
@@ -36,8 +37,12 @@ class ViewProfile(View):
             user = User.objects.get(id=request.user.id)
         except ObjectDoesNotExist:
             return Http404
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
+            if 'image' in request.FILES:
+                form.image = request.FILES['image']
+                print(request.FILES['image'])
+            # form.image = request.POST['image']
             form.save(user)
             form = PostForm()
         args = {
@@ -47,6 +52,41 @@ class ViewProfile(View):
 
         }
         return render(request, self.template_name, args)
+
+
+class PeopleViewProfile(View):
+
+    template_name = 'my_profile/people_page.html'
+
+    def get(self, request, pk):
+        try:
+            user = User.objects.get(pk=pk)
+        except ObjectDoesNotExist:
+            raise Http404
+        if user.id > request.user.id:
+            room_name = f'{user.id}_{request.user.id}'
+        else:
+            room_name = f'{request.user.id}_{user.id}'
+        args = {
+            'user': user,
+            'room': reverse('room', kwargs={'room_name': room_name}),
+            'posts': Post.objects.filter(author=user).order_by('-id')
+        }
+        return render(request, 'my_profile/people_page.html', args)
+
+
+def click_on_the_contact(request, pk):
+    user = User.objects.get(pk=pk)
+    if user.id > request.user.id:
+        room_name = f'{user.id}_{request.user.id}'
+    else:
+        room_name = f'{request.user.id}_{user.id}'
+    args = {
+        'user': user,
+        'room': reverse('room', kwargs={'room_name': room_name}),
+    }
+
+    return render(request, 'my_profile/test.html', args)
 
 
 class PostUpdate(View):
@@ -113,10 +153,10 @@ def profile_information(request, pk=None):
 
 class EditProfileInformation(View):
     def get(self, request, pk):
-        # user = User.objects.get(id=id)
+        user = User.objects.get(pk=pk)
         profile = UserProfile.objects.get(pk=pk)
         edit_form = EditProfileInformationForm(instance=profile)
-        context = {'form': edit_form, 'profile': profile}
+        context = {'form': edit_form, 'profile': profile, "user": user}
         return render(request, 'my_profile/edit.html', context)
 
     def post(self, request, pk):
@@ -202,8 +242,6 @@ def peoples(request):
     except:
         friends = None
         followers = None
-    print(users)
-    print(friends)
     args = {
         "users": users,
         "friends": friends,
