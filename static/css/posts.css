@@ -8,6 +8,14 @@ img {width:100%;}
 .like{
     margin-top: -4%;
 }
+.card-body{
+    position: relative;
+    width: 20px;
+}
+.card{
+    position: relative;
+    width: 20px;
+}
 /*.dislike{*/
     /*margin-top: -4%;*/
 /*}*/
