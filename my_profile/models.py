@@ -56,4 +56,12 @@ class Tag(models.Model):
         verbose_name_plural = 'Тэги'
 
 
+class ProfileFile(models.Model):
+    file = models.FileField(upload_to='files')
+    requester = models.ForeignKey(User, on_delete=models.CASCADE, related_name='request')
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='send')
+
+    def __str__(self):
+        return str(self.file.file.name)
+
 

@@ -23,3 +23,4 @@ class DislikeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Dislike, DislikeAdmin)
+admin.site.register(ProfileFile)

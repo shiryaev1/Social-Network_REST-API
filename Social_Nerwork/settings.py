@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'channels',
     'my_profile',
     'landing',
+    'filetransfers',
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -177,3 +178,6 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '492730529911-ulo8bbuo35fggbi188i30b0j5vvan2mi.a
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'XZW2gAMVHU2YVj5TBwo-RzLS'
 DATETIME_FORMAT = '%H:%M'
 
+PREPARE_UPLOAD_BACKEND = 'filetransfers.backends.default.prepare_upload'
+SERVE_FILE_BACKEND = 'filetransfers.backends.default.serve_file'
+PUBLIC_DOWNLOAD_URL_BACKEND = 'filetransfers.backends.default.public_download_url'

@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from landing.models import UserProfile, ProfileImage
+from my_profile.models import ProfileFile
 
 
 class RegistrationForm(UserCreationForm):
@@ -66,5 +67,19 @@ class AddProfileImageForm(forms.ModelForm):
         user_info.save()
 
 
+class AddProfileFileForm(forms.ModelForm):
 
+    class Meta:
+        model = ProfileFile
+        fields = ['file', ]
 
+        widgets = {
+            'file': forms.FileInput(attrs={'class': 'form-control', 'placeholder': "upload image"}),
+
+        }
+
+    def save(self, requester, sender):
+        user_info = super(AddProfileFileForm, self).save(commit=False)
+        user_info.requester = requester
+        user_info.sender = sender
+        user_info.save()

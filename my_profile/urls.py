@@ -22,5 +22,9 @@ urlpatterns = [
             name='people-profile'),
     re_path(r'^click/(?P<pk>\d+)/$', click_on_the_contact,
             name='click'),
-
+    re_path(r'^profile/(?P<pk>\d+)/send-file/$', views.upload,
+                name='upload'),
+    path('profile/files', views.request_files, name='user-files'),
+    re_path(r'^profile/file/(?P<pk>\d+)/download/$', views.download,
+                    name='download-file'),
 ]

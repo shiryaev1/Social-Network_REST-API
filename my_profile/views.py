@@ -1,13 +1,20 @@
+import os
+
+from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import Http404
+from django.core.files.storage import FileSystemStorage
+from django.http import Http404, FileResponse
 from django.shortcuts import render
 from django.views.generic import View, TemplateView
 from django.shortcuts import redirect
 from django.contrib import auth
 
 from django.shortcuts import get_object_or_404, HttpResponse
+from django.views.static import serve
+from filetransfers.api import serve_file
+
 from my_profile.models import *
-from landing.forms import EditProfileInformationForm, AddProfileImageForm
+from landing.forms import EditProfileInformationForm, AddProfileImageForm, AddProfileFileForm
 from my_profile.forms import PostForm
 from landing.models import UserProfile, Friend
 
@@ -247,3 +254,37 @@ def peoples(request):
         "friends": friends,
     }
     return render(request, 'my_profile/collection.html', args)
+
+
+def upload(request, pk=None):
+    sender = User.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = AddProfileFileForm(request.POST or None, request.FILES)
+        if form.is_valid():
+            form.save(request.user, sender)
+            return redirect('home')
+    else:
+        form = AddProfileFileForm()
+    return render(request, 'my_profile/collection.html', {
+        'form': form
+    })
+
+
+def request_files(request):
+    files = ProfileFile.objects.filter(requester=request.user)
+
+    args = {
+        "files": files,
+    }
+    return render(request, 'my_profile/request_files.html', args)
+
+
+def download(request, pk):
+    item = get_object_or_404(ProfileFile, pk=pk)
+    file_name, file_extension = os.path.splitext(item.file.file.name)
+    file_extension = file_extension[1:]  # removes dot
+    response = FileResponse(item.file.file,
+                            content_type="file/%s" % file_extension)
+    response["Content-Disposition"] = "attachment;" \
+                                      "filename=%s.%s" % (slugify(item.file.name)[:100], file_extension)
+    return response

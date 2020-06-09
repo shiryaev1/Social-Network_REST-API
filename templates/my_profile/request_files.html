@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 {% load static %}
+{% load filetransfers %}
 
 
 {% block content %}
@@ -42,45 +43,24 @@
 	    		<div class="row d-flex">
 	    			<div class="col-lg-8">
 	    				<div class="row">
-                        {% for user in users %}
+                        {% for file in files %}
 
 			    			<div class="col-md-12">
 			    				<div class="blog-entry ftco-animate d-md-flex">
-{#                                    {% for friend in friends %}#}
-                                        {% if user.userprofile.image %}
-										<a href="single.html" class="img img-2" style="background-image: url({{ user.userprofile.image.url }});"></a>
-                                        {% else %}
-                                        <a href="single.html" class="img img-2" style="background-image: url({% static 'media/profile_image/anon-user.jpg' %});"></a>
-                                        {% endif %}
-{#                                    {% endfor %}#}
+
 										<div class="text text-2 p-4">
-                                          <h3 class="mb-2"><a href="{% url 'people-profile' pk=user.pk %}">{{user.first_name}} {{ user.last_name }}</a></h3>
                                           <div class="meta-wrap">
                                                             <p class="meta">
-                                                <span>City: {{user.userprofile.city}}</span><br>
-                                                <span><a href="single.html">Phone: +{{ user.userprofile.phone }}</a></span><br>
-                                                {% if user.userprofile.website %}
-                                                <span>Website: {{ user.userprofile.website }}</span>
-                                                {% endif %}
-                                            </p>
-                                            </div>
-                                              <p class="mb-4">{{ user.userprofile.description|truncatechars:40 }}</p>
-                                                {% if user in friends %}
-                                                    <p><a href="{% url 'accounts:change_friends' operation='remove' pk=user.pk %}" class ="btn-custom">Remove friend<span class="fa fa-share-square"></span></a></p>
-                                                {% else %}
-                                                    <p><a href="{% url 'accounts:change_friends' operation='add' pk=user.pk %}" class ="btn-custom">Add friend<span class="fa fa-share-square"></span></a></p>
+                                                <span>File name: {{ file.file.name }}</span><br>
+                                                <span>File size: {{ file.file.size }}</span><br>
+                                                <span>Sender: {{ file.sender }}</span><br>
 
-                                                {% endif %}
-{#                                                <form method="post" enctype="multipart/form-data">#}
-{#                                                    {% csrf_token %}#}
-{#                                                    <input type="file" name="document">#}
-{#                                                    <div id="upload-img" class="form-group">#}
-{#                                                        {{ form.file }}#}
-{#                                                    </div>#}
-{#                                                    <p><a href="{% url 'upload' pk=user.pk %}" class ="btn-custom">Send FILE<span class="fa fa-share-square"></span></a></p>#}
-{#                                                 </form>#}
-{#                                                <p><a href="" class ="btn-custom">Send FILE<span class="fa fa-share-square"></span></a></p>#}
-                                        </div>
+{#                                                <p><a href="{% url 'download-file' pk=file.id %}" class ="btn-custom">Remove friend<span class="fa fa-share-square"></span></a></p>#}
+{#                                                <button type="button" href="{% url 'download-file' path=file.file.path%}">Download</button>#}
+{#                                                <span><a href="{{ file.file.url }}"></a></span><br>#}
+
+                                            </p>
+
 									</div>
 			    			</div>
                             {% endfor %}
