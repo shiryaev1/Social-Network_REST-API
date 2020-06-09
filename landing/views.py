@@ -81,7 +81,7 @@ def change_friends(request, operation, pk):
         elif operation == 'remove':
             Friend.lose_friend(request.user, friend)
             Friend.lose_friend(friend, request.user)
-    return redirect('profile')
+    return redirect('peoples')
 
 
 def view_friends(request):

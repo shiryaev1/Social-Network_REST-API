@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6ee6b03-249e-4727-92bb-329520f0852d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/posts.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/posts.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accounts/reg_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/reg_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/include/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/include/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/my_profile/posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_profile/posts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/landing/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/landing/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/landing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/landing/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_profile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_profile/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/chat/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chat/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/chat/room.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chat/room.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/my_profile/collection.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_profile/collection.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/my_profile/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_profile/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/my_profile/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_profile/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/my_profile/people_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_profile/people_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/my_profile/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_profile/test.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +63,8 @@
       <list>
         <option value="JavaScript File" />
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -70,15 +75,16 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Python/saleor-platform" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -306,6 +312,10 @@
       <workItem from="1584981866711" duration="1230000" />
       <workItem from="1585378204513" duration="622000" />
       <workItem from="1585403310939" duration="1944000" />
+      <workItem from="1589132539013" duration="5541000" />
+      <workItem from="1589179267215" duration="17000" />
+      <workItem from="1591027490660" duration="912000" />
+      <workItem from="1591079903524" duration="74000" />
     </task>
     <servers />
   </component>
@@ -319,22 +329,25 @@
     </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="655" y="134" width="666" height="837" key="#Social_Nerwork" timestamp="1591027572937">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="655" y="134" width="666" height="837" key="#Social_Nerwork/67.27.1853.1053@67.27.1853.1053" timestamp="1591027572937" />
     <state x="588" y="214" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584982438938">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -343,10 +356,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="726" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1584960996860" />
-    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1584982385699">
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1591079974931">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1584982385699" />
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1591079974931" />
     <state width="1807" height="312" key="GridCell.Tab.0.bottom" timestamp="1585420409915">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -375,6 +388,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1585403310906" />
+    <state x="695" y="473" width="762" height="522" key="find.popup" timestamp="1589137886032">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="695" y="473" width="762" height="522" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1589137886032" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

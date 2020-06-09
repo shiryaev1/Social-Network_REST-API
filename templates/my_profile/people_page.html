@@ -15,10 +15,10 @@
 				<ul>
 					<li class="colorlib-active"><a href="{% url 'profile' %}">My profile</a></li>
 					<li><a href="{% url 'edit_profile_url' pk=request.user.id %}">Edit profile</a></li>
-					<li><a href="about.html">About me</a></li>
-					<li><a href="services.html">News</a></li>
+{#					<li><a href="about.html">About me</a></li>#}
+					<li><a href="{% url 'accounts:logout' %}">Logout</a></li>
 					<li><a href="{% url 'peoples' %}">Peoples</a></li>
-					<li><a href="contact.html">Photos</a></li>
+					<li><a href="{% url 'posts_list_url' %}">Posts</a></li>
 				</ul>
 			</nav>
 		</aside> <!-- END COLORLIB-ASIDE -->

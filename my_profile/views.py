@@ -90,8 +90,8 @@ def click_on_the_contact(request, pk):
 
 
 class PostUpdate(View):
-    def get(self,request,slug):
-        post = Post.objects.get(slug__iexact=slug)
+    def get(self,request,id):
+        post = Post.objects.get(id=id)
         bount_form = PostForm(instance=post)
         context = {
             'form': bount_form,
@@ -99,14 +99,14 @@ class PostUpdate(View):
         }
         return render(request,'my_profile/post_update.html', context)
 
-    def post(self,request,slug):
-        post = Post.objects.get(slug__iexact=slug)
+    def post(self,request,id):
+        post = Post.objects.get(id=id)
         bount_form = PostForm(request.POST, request.FILES, instance=post)
         if bount_form.is_valid():
             if 'image' in request.FILES:
                 bount_form.image = request.FILES['image']
             new_post = bount_form.save(request.user)
-            return redirect('accounts:view_profile')
+            return redirect('profile')
         else:
             print(bount_form.errors)
         context = {
@@ -135,7 +135,7 @@ def posts_list(request):
         'posts': posts,
         'username': auth.get_user(request).username
     }
-    return render(request, 'my_profile/posts.html', context)
+    return render(request, 'my_profile/posts_news.html', context)
 
 
 def profile_information(request, pk=None):
